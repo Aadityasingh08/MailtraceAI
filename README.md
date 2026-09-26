@@ -229,13 +229,13 @@ Test MailTrace AI instantly using our realistic forensic samples (accessible via
       <td align="center" style="background: linear-gradient(145deg, rgba(16, 185, 129, 0.08), rgba(15, 23, 42, 0.04)); border: 1.5px solid rgba(16, 185, 129, 0.35); border-radius: 20px; padding: 28px 24px; width: 340px; box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.25);">
         <div style="position: relative; display: inline-block;">
           <a href="https://github.com/BhawnaBhadana" target="_blank">
-            <img src="https://github.com/BhawnaBhadana.png" width="130px" height="130px" alt="Bhawna" style="border-radius: 50%; border: 3.5px solid #10B981; box-shadow: 0 0 25px rgba(16, 185, 129, 0.5); object-fit: cover;" />
+            <img src="https://github.com/BhawnaBhadana.png" width="130px" height="130px" alt="Bhawna Bhadana" style="border-radius: 50%; border: 3.5px solid #10B981; box-shadow: 0 0 25px rgba(16, 185, 129, 0.5); object-fit: cover;" />
           </a>
         </div>
         <br />
         <h3 style="margin-top: 14px; margin-bottom: 4px; font-size: 20px;">
           <a href="https://github.com/BhawnaBhadana" target="_blank" style="text-decoration: none; color: inherit;">
-            <b>Bhawna ❤️</b>
+            <b>Bhawna Bhadana ❤️</b>
           </a>
         </h3>
         <span style="display: inline-block; background: rgba(16, 185, 129, 0.15); color: #059669; border: 1px solid rgba(16, 185, 129, 0.4); font-weight: 700; font-size: 12px; padding: 4px 12px; border-radius: 12px; margin-bottom: 10px; font-family: monospace;">
@@ -260,8 +260,35 @@ Test MailTrace AI instantly using our realistic forensic samples (accessible via
 <br />
 
 <div align="center">
-  <p style="font-size: 15px; font-weight: 600; color: #334155;">
-    Crafted with ❤️, Passion & Advanced Artificial Intelligence by <b>Aditya Singh</b> & <b>Bhawna</b>
+  <table style="border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 10px; width: 80%; max-width: 650px;">
+    <thead>
+      <tr style="background: rgba(16, 185, 129, 0.1);">
+        <th align="left" style="padding: 10px 16px;">Core Contributor</th>
+        <th align="left" style="padding: 10px 16px;">Role</th>
+        <th align="center" style="padding: 10px 16px;">GitHub Profile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding: 10px 16px;"><b>Aditya Singh ❤️</b></td>
+        <td style="padding: 10px 16px;">Full Stack AI Engineer</td>
+        <td align="center" style="padding: 10px 16px;"><a href="https://github.com/Aadityasingh08" target="_blank"><b>@Aadityasingh08</b></a></td>
+      </tr>
+      <tr>
+        <td style="padding: 10px 16px;"><b>Bhawna Bhadana ❤️</b></td>
+        <td style="padding: 10px 16px;">Full Stack AI Engineer</td>
+        <td align="center" style="padding: 10px 16px;"><a href="https://github.com/BhawnaBhadana" target="_blank"><b>@BhawnaBhadana</b></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br />
+
+  <p style="font-size: 16px; font-weight: 700; color: #1E293B;">
+    Crafted with ❤️, Passion & Advanced Artificial Intelligence by 
+    <a href="https://github.com/Aadityasingh08" target="_blank" style="color: #059669; text-decoration: none;"><b>Aditya Singh ❤️</b></a> 
+    & 
+    <a href="https://github.com/BhawnaBhadana" target="_blank" style="color: #059669; text-decoration: none;"><b>Bhawna Bhadana ❤️</b></a>
   </p>
   <p style="font-size: 13px; color: #64748B;">
     ⭐ <i>If you like this project, please consider giving it a star on GitHub! It means the world to us.</i> ⭐
