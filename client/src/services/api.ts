@@ -1,6 +1,6 @@
 const API_BASE = import.meta.env.VITE_API_URL
   ? `${import.meta.env.VITE_API_URL.replace(/\/+$/, '')}/api`
-  : (import.meta.env.PROD ? '/api' : 'http://localhost:5000/api');
+  : (import.meta.env.PROD ? 'https://mailtraceai.onrender.com/api' : 'http://localhost:5000/api');
 
 export function getStoredToken(): string | null {
   return localStorage.getItem('mailtrace_token');
