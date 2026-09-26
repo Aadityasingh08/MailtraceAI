@@ -193,69 +193,46 @@ Test MailTrace AI instantly using our realistic forensic samples (accessible via
   <i>"Engineered with relentless passion, forensic precision, and advanced AI."</i>
 </p>
 
-<div align="center">
-  <table style="border: none; background: transparent; border-collapse: separate; border-spacing: 24px;">
-    <tr>
-      <!-- Aditya Singh Card -->
-      <td align="center" style="background: linear-gradient(145deg, rgba(16, 185, 129, 0.08), rgba(15, 23, 42, 0.04)); border: 1.5px solid rgba(16, 185, 129, 0.35); border-radius: 20px; padding: 28px 24px; width: 340px; box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.25);">
-        <div style="position: relative; display: inline-block;">
-          <a href="https://github.com/Aadityasingh08" target="_blank">
-            <img src="https://github.com/Aadityasingh08.png" width="130px" height="130px" alt="Aditya Singh" style="border-radius: 50%; border: 3.5px solid #10B981; box-shadow: 0 0 25px rgba(16, 185, 129, 0.5); object-fit: cover;" />
-          </a>
-        </div>
-        <br />
-        <h3 style="margin-top: 14px; margin-bottom: 4px; font-size: 20px;">
-          <a href="https://github.com/Aadityasingh08" target="_blank" style="text-decoration: none; color: inherit;">
-            <b>Aditya Singh ❤️</b>
-          </a>
-        </h3>
-        <span style="display: inline-block; background: rgba(16, 185, 129, 0.15); color: #059669; border: 1px solid rgba(16, 185, 129, 0.4); font-weight: 700; font-size: 12px; padding: 4px 12px; border-radius: 12px; margin-bottom: 10px; font-family: monospace;">
-          ⚡ FULL STACK AI ENGINEER
-        </span>
-        <p style="font-size: 13px; color: #64748B; margin: 8px 0 16px 0; line-height: 1.5;">
-          🛡️ <b>Focus:</b> System Architecture • Threat Intelligence • RFC 5322 Forensics • Multi-Hop Latency Engines
-        </p>
-        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-          <a href="https://github.com/Aadityasingh08" target="_blank">
-            <img src="https://img.shields.io/badge/GitHub-Aadityasingh08-181717?style=for-the-badge&logo=github&logoColor=white" alt="Aditya GitHub" />
-          </a>
-          <a href="https://github.com/Aadityasingh08?tab=followers" target="_blank">
-            <img src="https://img.shields.io/github/followers/Aadityasingh08?label=Follow&style=for-the-badge&color=10B981&logo=github" alt="Follow Aditya" />
-          </a>
-        </div>
-      </td>
-
-      <!-- Bhawna Card -->
-      <td align="center" style="background: linear-gradient(145deg, rgba(16, 185, 129, 0.08), rgba(15, 23, 42, 0.04)); border: 1.5px solid rgba(16, 185, 129, 0.35); border-radius: 20px; padding: 28px 24px; width: 340px; box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.25);">
-        <div style="position: relative; display: inline-block;">
-          <a href="https://github.com/BhawnaBhadana" target="_blank">
-            <img src="https://github.com/BhawnaBhadana.png" width="130px" height="130px" alt="Bhawna Bhadana" style="border-radius: 50%; border: 3.5px solid #10B981; box-shadow: 0 0 25px rgba(16, 185, 129, 0.5); object-fit: cover;" />
-          </a>
-        </div>
-        <br />
-        <h3 style="margin-top: 14px; margin-bottom: 4px; font-size: 20px;">
-          <a href="https://github.com/BhawnaBhadana" target="_blank" style="text-decoration: none; color: inherit;">
-            <b>Bhawna Bhadana ❤️</b>
-          </a>
-        </h3>
-        <span style="display: inline-block; background: rgba(16, 185, 129, 0.15); color: #059669; border: 1px solid rgba(16, 185, 129, 0.4); font-weight: 700; font-size: 12px; padding: 4px 12px; border-radius: 12px; margin-bottom: 10px; font-family: monospace;">
-          ⚡ FULL STACK AI ENGINEER
-        </span>
-        <p style="font-size: 13px; color: #64748B; margin: 8px 0 16px 0; line-height: 1.5;">
-          🔬 <b>Focus:</b> Detection Engineering • Cyber SOC Experience • YARA / Sigma Logic • Threat Heuristics
-        </p>
-        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-          <a href="https://github.com/BhawnaBhadana" target="_blank">
-            <img src="https://img.shields.io/badge/GitHub-BhawnaBhadana-181717?style=for-the-badge&logo=github&logoColor=white" alt="Bhawna GitHub" />
-          </a>
-          <a href="https://github.com/BhawnaBhadana?tab=followers" target="_blank">
-            <img src="https://img.shields.io/github/followers/BhawnaBhadana?label=Follow&style=for-the-badge&color=10B981&logo=github" alt="Follow Bhawna" />
-          </a>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<table align="center">
+  <tr>
+    <td align="center" width="350" valign="top">
+      <br />
+      <a href="https://github.com/Aadityasingh08" target="_blank">
+        <img src="https://github.com/Aadityasingh08.png" width="130" height="130" alt="Aditya Singh" style="border-radius: 50%;" />
+        <br /><br />
+        <h3 style="margin: 0;"><b>Aditya Singh ❤️</b></h3>
+      </a>
+      <p style="margin: 6px 0;"><b>⚡ Full Stack AI Engineer</b></p>
+      <p style="font-size: 13px; color: #64748B; margin: 4px 0 12px 0;">🛡️ <i>System Architecture • Threat Intelligence • RFC Forensics</i></p>
+      <a href="https://github.com/Aadityasingh08" target="_blank">
+        <img src="https://img.shields.io/badge/GitHub-Aadityasingh08-181717?style=for-the-badge&logo=github&logoColor=white" alt="Aditya GitHub" />
+      </a>
+      &nbsp;
+      <a href="https://github.com/Aadityasingh08?tab=followers" target="_blank">
+        <img src="https://img.shields.io/github/followers/Aadityasingh08?label=Follow&style=for-the-badge&color=10B981&logo=github" alt="Follow Aditya" />
+      </a>
+      <br /><br />
+    </td>
+    <td align="center" width="350" valign="top">
+      <br />
+      <a href="https://github.com/BhawnaBhadana" target="_blank">
+        <img src="https://github.com/BhawnaBhadana.png" width="130" height="130" alt="Bhawna Bhadana" style="border-radius: 50%;" />
+        <br /><br />
+        <h3 style="margin: 0;"><b>Bhawna Bhadana ❤️</b></h3>
+      </a>
+      <p style="margin: 6px 0;"><b>⚡ Full Stack AI Engineer</b></p>
+      <p style="font-size: 13px; color: #64748B; margin: 4px 0 12px 0;">🔬 <i>Detection Engineering • Cyber SOC UI • YARA & Sigma</i></p>
+      <a href="https://github.com/BhawnaBhadana" target="_blank">
+        <img src="https://img.shields.io/badge/GitHub-BhawnaBhadana-181717?style=for-the-badge&logo=github&logoColor=white" alt="Bhawna GitHub" />
+      </a>
+      &nbsp;
+      <a href="https://github.com/BhawnaBhadana?tab=followers" target="_blank">
+        <img src="https://img.shields.io/github/followers/BhawnaBhadana?label=Follow&style=for-the-badge&color=10B981&logo=github" alt="Follow Bhawna" />
+      </a>
+      <br /><br />
+    </td>
+  </tr>
+</table>
 
 <br />
 
