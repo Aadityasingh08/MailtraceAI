@@ -17,9 +17,10 @@ import {
   Command,
   QrCode,
   Skull,
-  Zap
+  Zap,
+  Palette
 } from 'lucide-react';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme, THEME_OPTIONS } from '../context/ThemeContext';
 import { api } from '../services/api';
 
 interface CommandPaletteModalProps {
@@ -31,7 +32,7 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({ isOpen
   const [query, setQuery] = useState('');
   const [loadingDemo, setLoadingDemo] = useState(false);
   const navigate = useNavigate();
-  const { theme, toggleTheme } = useTheme();
+  const { theme, colorTheme, setColorTheme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -86,6 +87,13 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({ isOpen
       icon: theme === 'dark' ? Sun : Moon, 
       action: () => { toggleTheme(); onClose(); } 
     },
+    ...THEME_OPTIONS.map(opt => ({
+      id: `theme-${opt.id}`,
+      title: `Theme: ${opt.name} (${opt.subtitle})`,
+      category: 'Themes & Visuals',
+      icon: Palette,
+      action: () => { setColorTheme(opt.id); onClose(); }
+    })),
     { id: 'demo-phishing', title: 'Simulate Phishing (M365 Harvester)', category: 'Quick Demo', icon: Play, action: () => handleLoadDemo('demo-phishing-m365') },
     { id: 'demo-bec', title: 'Simulate BEC (Wire Transfer Fraud)', category: 'Quick Demo', icon: Play, action: () => handleLoadDemo('demo-bec-wire-transfer') },
     { id: 'demo-benign', title: 'Simulate Benign (Meeting Invite)', category: 'Quick Demo', icon: Play, action: () => handleLoadDemo('demo-benign-meeting') },

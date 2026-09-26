@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Settings, Key, Users, Shield, Save, CheckCircle, Database } from 'lucide-react';
+import { Settings, Key, Users, Shield, Save, CheckCircle, Database, Palette, Sparkles, Check, Moon, Sun } from 'lucide-react';
 import { api } from '../services/api';
 import { useAuth } from '../context/AuthContext';
+import { useTheme, THEME_OPTIONS } from '../context/ThemeContext';
 import { User } from '../types';
 
 export const SettingsPage: React.FC = () => {
   const { user } = useAuth();
+  const { colorTheme, setColorTheme } = useTheme();
   const isAdmin = user?.role === 'ADMIN';
 
   // System settings state
@@ -95,6 +97,76 @@ export const SettingsPage: React.FC = () => {
         <p className="text-xs text-slate-600 font-mono mt-1 font-medium">
           Manage threat intelligence provider connectors, RBAC user permissions, and security audit logs
         </p>
+      </div>
+
+      {/* Theme & Visual Appearance Selection Card */}
+      <div className="glass-panel p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+          <div className="flex items-center space-x-2">
+            <Palette className="w-5 h-5 text-soc-accent" style={{ color: 'var(--soc-accent)' }} />
+            <div>
+              <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 font-mono uppercase">
+                Visual Appearance & SOC Color Themes
+              </h3>
+              <p className="text-[11px] text-slate-500 font-sans">
+                Choose your preferred SOC operational display profile, contrast intensity, and glowing cyber accents.
+              </p>
+            </div>
+          </div>
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-soc-border text-soc-muted">
+            5 Styles
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 pt-1">
+          {THEME_OPTIONS.map((opt) => {
+            const isSelected = colorTheme === opt.id;
+            return (
+              <button
+                key={opt.id}
+                onClick={() => setColorTheme(opt.id)}
+                className={`relative flex flex-col p-3 rounded-xl border text-left transition-all ${
+                  isSelected
+                    ? 'ring-2 shadow-lg border-transparent'
+                    : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 bg-slate-50/50 dark:bg-slate-800/40'
+                }`}
+                style={{
+                  boxShadow: isSelected ? `0 0 16px -2px ${opt.accentColor}50` : undefined,
+                  borderColor: isSelected ? opt.accentColor : undefined,
+                }}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span 
+                    className="w-4 h-4 rounded-full ring-2 ring-white/20"
+                    style={{ backgroundColor: opt.accentColor }} 
+                  />
+                  {opt.isDark ? (
+                    <Moon className="w-3 h-3 text-slate-400" />
+                  ) : (
+                    <Sun className="w-3 h-3 text-amber-500" />
+                  )}
+                </div>
+                <div className="font-bold text-xs text-slate-900 dark:text-slate-100">
+                  {opt.name}
+                </div>
+                <div className="text-[10px] text-slate-500 line-clamp-1 mb-2">
+                  {opt.subtitle}
+                </div>
+                <div className="mt-auto flex items-center justify-between pt-1 border-t border-slate-200/50 dark:border-slate-800/50">
+                  <div className={`h-1.5 w-10 rounded-full bg-gradient-to-r ${opt.gradientClass}`} />
+                  {isSelected && (
+                    <span 
+                      className="text-[10px] font-bold px-1.5 py-0.2 rounded"
+                      style={{ color: opt.accentColor }}
+                    >
+                      Active
+                    </span>
+                  )}
+                </div>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

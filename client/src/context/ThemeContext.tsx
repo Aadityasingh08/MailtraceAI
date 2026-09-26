@@ -1,47 +1,129 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'light' | 'dark';
+export type ColorTheme = 'cyber-cyan' | 'matrix-emerald' | 'synth-violet' | 'crimson-stealth' | 'arctic-light';
+export type ThemeMode = 'light' | 'dark';
+
+export interface ThemeOption {
+  id: ColorTheme;
+  name: string;
+  subtitle: string;
+  badge: string;
+  accentColor: string;
+  gradientClass: string;
+  isDark: boolean;
+}
+
+export const THEME_OPTIONS: ThemeOption[] = [
+  {
+    id: 'cyber-cyan',
+    name: 'Cyber Cyan',
+    subtitle: 'Electric Cyan & Cosmic Void',
+    badge: 'Popular',
+    accentColor: '#06B6D4',
+    gradientClass: 'from-cyan-500 via-teal-400 to-blue-600',
+    isDark: true,
+  },
+  {
+    id: 'matrix-emerald',
+    name: 'Matrix Emerald',
+    subtitle: 'Classic SOC Phosphor Green',
+    badge: 'Classic',
+    accentColor: '#10B981',
+    gradientClass: 'from-emerald-500 via-green-400 to-teal-600',
+    isDark: true,
+  },
+  {
+    id: 'synth-violet',
+    name: 'Synth Violet',
+    subtitle: 'Cyberpunk Purple & Deep Nebula',
+    badge: 'Neon AI',
+    accentColor: '#A855F7',
+    gradientClass: 'from-purple-500 via-violet-400 to-indigo-600',
+    isDark: true,
+  },
+  {
+    id: 'crimson-stealth',
+    name: 'Crimson Stealth',
+    subtitle: 'Tactical Red & Carbon Ops',
+    badge: 'War Room',
+    accentColor: '#EF4444',
+    gradientClass: 'from-red-500 via-rose-500 to-orange-600',
+    isDark: true,
+  },
+  {
+    id: 'arctic-light',
+    name: 'Arctic Daylight',
+    subtitle: 'Pristine Executive Glass',
+    badge: 'Daylight',
+    accentColor: '#0284C7',
+    gradientClass: 'from-sky-500 via-blue-500 to-indigo-600',
+    isDark: false,
+  },
+];
 
 interface ThemeContextType {
-  theme: Theme;
+  colorTheme: ColorTheme;
+  setColorTheme: (theme: ColorTheme) => void;
+  theme: ThemeMode; // 'light' | 'dark' for backward compatibility
   toggleTheme: () => void;
-  setTheme: (theme: Theme) => void;
+  setTheme: (mode: ThemeMode) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setThemeState] = useState<Theme>(() => {
-    const saved = localStorage.getItem('mailtrace_theme') as Theme | null;
-    if (saved === 'dark' || saved === 'light') {
+  const [colorTheme, setColorThemeState] = useState<ColorTheme>(() => {
+    const saved = localStorage.getItem('mailtrace_color_theme') as ColorTheme | null;
+    if (saved && THEME_OPTIONS.some(t => t.id === saved)) {
       return saved;
     }
-    // Default to light as recently requested, or check system preference
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    // Default to the new high-tech Cyber Cyan theme
+    return 'cyber-cyan';
   });
+
+  const currentOption = THEME_OPTIONS.find(t => t.id === colorTheme) || THEME_OPTIONS[0];
+  const themeMode: ThemeMode = currentOption.isDark ? 'dark' : 'light';
 
   useEffect(() => {
     const root = document.documentElement;
-    if (theme === 'dark') {
+    // Remove all previous theme classes
+    THEME_OPTIONS.forEach(t => {
+      root.classList.remove(`theme-${t.id}`);
+    });
+    
+    // Add current theme class
+    root.classList.add(`theme-${colorTheme}`);
+
+    if (currentOption.isDark) {
       root.classList.add('dark');
       root.style.colorScheme = 'dark';
     } else {
       root.classList.remove('dark');
       root.style.colorScheme = 'light';
     }
-    localStorage.setItem('mailtrace_theme', theme);
-  }, [theme]);
+
+    localStorage.setItem('mailtrace_color_theme', colorTheme);
+    localStorage.setItem('mailtrace_theme', themeMode);
+  }, [colorTheme, currentOption.isDark, themeMode]);
 
   const toggleTheme = () => {
-    setThemeState(prev => (prev === 'light' ? 'dark' : 'light'));
+    setColorThemeState(prev => (prev === 'arctic-light' ? 'cyber-cyan' : 'arctic-light'));
   };
 
-  const setTheme = (t: Theme) => {
-    setThemeState(t);
+  const setTheme = (mode: ThemeMode) => {
+    if (mode === 'light') {
+      setColorThemeState('arctic-light');
+    } else {
+      setColorThemeState(prev => (prev === 'arctic-light' ? 'cyber-cyan' : prev));
+    }
+  };
+
+  const setColorTheme = (t: ColorTheme) => {
+    setColorThemeState(t);
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
+    <ThemeContext.Provider value={{ colorTheme, setColorTheme, theme: themeMode, toggleTheme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );

@@ -16,22 +16,27 @@ import {
   X,
   Sun,
   Moon,
-  Command
+  Command,
+  Palette
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme, THEME_OPTIONS } from '../context/ThemeContext';
 import { api } from '../services/api';
 import { CommandPaletteModal } from './CommandPaletteModal';
+import { ThemePickerModal } from './ThemePickerModal';
 
 export const Navbar: React.FC = () => {
   const { user, logout } = useAuth();
-  const { theme, toggleTheme } = useTheme();
+  const { theme, colorTheme, toggleTheme } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
   const [demoMenuOpen, setDemoMenuOpen] = useState(false);
   const [loadingDemo, setLoadingDemo] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+  const [themePickerOpen, setThemePickerOpen] = useState(false);
+
+  const activeThemeObj = THEME_OPTIONS.find(t => t.id === colorTheme) || THEME_OPTIONS[0];
 
   const navLinks = [
     { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -116,6 +121,25 @@ export const Navbar: React.FC = () => {
                 <kbd className="px-1.5 py-0.5 rounded text-[10px] bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600">
                   Ctrl K
                 </kbd>
+              </button>
+
+              {/* Theme Palette Modal Trigger */}
+              <button
+                onClick={() => setThemePickerOpen(true)}
+                className="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-all border border-slate-200 dark:border-slate-700 group shadow-sm"
+                title={`Current Theme: ${activeThemeObj.name} (Click to switch)`}
+                aria-label="Change color theme"
+              >
+                <div className="relative flex items-center justify-center">
+                  <Palette className="w-4 h-4 transition-transform group-hover:rotate-45" style={{ color: activeThemeObj.accentColor }} />
+                  <span 
+                    className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full ring-1 ring-soc-bg"
+                    style={{ backgroundColor: activeThemeObj.accentColor }}
+                  />
+                </div>
+                <span className="hidden xl:inline text-xs font-semibold">
+                  {activeThemeObj.name.split(' ')[0]}
+                </span>
               </button>
 
               {/* Theme Toggle Button */}
@@ -270,9 +294,27 @@ export const Navbar: React.FC = () => {
                 </Link>
               );
             })}
+
+            {/* Mobile Theme Switcher */}
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                setThemePickerOpen(true);
+              }}
+              className="w-full flex items-center space-x-2.5 px-3 py-2 rounded-lg text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all border-t border-slate-200 dark:border-slate-800 pt-3 mt-2"
+            >
+              <Palette className="w-4 h-4" style={{ color: activeThemeObj.accentColor }} />
+              <span>Theme: {activeThemeObj.name}</span>
+            </button>
           </div>
         )}
       </header>
+
+      {/* Theme Picker Modal */}
+      <ThemePickerModal
+        isOpen={themePickerOpen}
+        onClose={() => setThemePickerOpen(false)}
+      />
 
       {/* Global Command Palette Modal */}
       <CommandPaletteModal 
