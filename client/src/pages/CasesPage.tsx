@@ -76,8 +76,8 @@ export const CasesPage: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-soc-border pb-4">
         <div>
           <div className="flex items-center space-x-2">
-            <Briefcase className="w-6 h-6 text-emerald-600" />
-            <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Security Incident Case Management</h1>
+            <Briefcase className="w-6 h-6 text-soc-accent" style={{ color: 'var(--soc-accent)' }} />
+            <h1 className="text-2xl font-extrabold text-soc-text tracking-tight">Security Incident Case Management</h1>
           </div>
           <p className="text-xs text-soc-muted font-mono mt-1">
             Track, assign, contain, and remediate email security incidents
@@ -86,7 +86,10 @@ export const CasesPage: React.FC = () => {
 
         <button
           onClick={() => setShowCreateModal(true)}
-          className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md shadow-emerald-600/20 transition-all"
+          className="flex items-center space-x-2 px-4 py-2 rounded-lg text-white font-bold text-xs shadow-md transition-all"
+          style={{
+            background: 'linear-gradient(135deg, var(--soc-accent) 0%, #D97706 100%)',
+          }}
         >
           <Plus className="w-4 h-4" />
           <span>Create Incident Case</span>
@@ -96,14 +99,14 @@ export const CasesPage: React.FC = () => {
       {/* Filters */}
       <div className="glass-panel p-4 rounded-xl border border-soc-border shadow-socCard flex flex-wrap items-center gap-3 text-xs font-mono">
         <div className="flex items-center space-x-2">
-          <Filter className="w-4 h-4 text-emerald-600" />
+          <Filter className="w-4 h-4 text-soc-accent" style={{ color: 'var(--soc-accent)' }} />
           <span className="text-soc-muted uppercase">Filter:</span>
         </div>
 
         <select
           value={statusFilter}
           onChange={e => setStatusFilter(e.target.value)}
-          className="px-3 py-1.5 rounded bg-white border border-soc-border text-slate-800 focus:outline-none focus:border-emerald-500"
+          className="px-3 py-1.5 rounded bg-soc-secondary border border-soc-border text-soc-text focus:outline-none focus:border-soc-accent"
         >
           <option value="">All Statuses</option>
           <option value="OPEN">Open</option>
@@ -116,7 +119,7 @@ export const CasesPage: React.FC = () => {
         <select
           value={priorityFilter}
           onChange={e => setPriorityFilter(e.target.value)}
-          className="px-3 py-1.5 rounded bg-white border border-soc-border text-slate-800 focus:outline-none focus:border-emerald-500"
+          className="px-3 py-1.5 rounded bg-soc-secondary border border-soc-border text-soc-text focus:outline-none focus:border-soc-accent"
         >
           <option value="">All Priorities</option>
           <option value="CRITICAL">Critical</option>
@@ -148,9 +151,9 @@ export const CasesPage: React.FC = () => {
                 </td>
 
                 <td className="py-3.5 px-3">
-                  <div className="font-bold text-slate-800 max-w-sm">{c.title}</div>
+                  <div className="font-bold text-soc-text max-w-sm">{c.title}</div>
                   <div className="text-[10px] text-soc-muted mt-0.5">
-                    Threat: <span className="text-emerald-700 font-semibold">{c.threat_type || 'SUSPICIOUS'}</span> · Risk: {c.risk_score}/100
+                    Threat: <span className="text-soc-accent font-semibold">{c.threat_type || 'SUSPICIOUS'}</span> · Risk: {c.risk_score}/100
                   </div>
                 </td>
 
@@ -164,7 +167,7 @@ export const CasesPage: React.FC = () => {
                   </span>
                 </td>
 
-                <td className="py-3.5 px-3 text-slate-700 font-medium">
+                <td className="py-3.5 px-3 text-soc-text font-medium">
                   {c.assigned_to || 'Unassigned'}
                 </td>
 
@@ -220,33 +223,33 @@ export const CasesPage: React.FC = () => {
 
       {/* Modal */}
       {showCreateModal && (
-        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white border border-slate-200 rounded-2xl max-w-md w-full shadow-2xl p-6 space-y-4 animate-in zoom-in-95 font-mono text-xs">
-            <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-              <h3 className="font-bold text-slate-900 uppercase text-sm">Create Security Incident Case</h3>
-              <button onClick={() => setShowCreateModal(false)} className="text-slate-400 hover:text-slate-700 font-bold">✕</button>
+        <div className="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-soc-card border border-soc-border rounded-2xl max-w-md w-full shadow-2xl p-6 space-y-4 animate-in zoom-in-95 font-mono text-xs">
+            <div className="flex items-center justify-between border-b border-soc-border pb-3">
+              <h3 className="font-bold text-soc-text uppercase text-sm">Create Security Incident Case</h3>
+              <button onClick={() => setShowCreateModal(false)} className="text-soc-muted hover:text-soc-text font-bold">✕</button>
             </div>
 
             <form onSubmit={handleCreateCase} className="space-y-4">
               <div>
-                <label className="block text-slate-700 font-bold uppercase mb-1">Case Title</label>
+                <label className="block text-soc-text font-bold uppercase mb-1">Case Title</label>
                 <input
                   type="text"
                   required
                   value={newTitle}
                   onChange={e => setNewTitle(e.target.value)}
                   placeholder="e.g. Active Credential Phishing Against Finance"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-soc-secondary border border-soc-border text-soc-text focus:outline-none focus:border-soc-accent"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-700 font-bold uppercase mb-1">Priority</label>
+                  <label className="block text-soc-text font-bold uppercase mb-1">Priority</label>
                   <select
                     value={newPriority}
                     onChange={e => setNewPriority(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 focus:outline-none focus:border-emerald-500 font-mono"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-soc-secondary border border-soc-border text-soc-text focus:outline-none focus:border-soc-accent font-mono"
                   >
                     <option value="CRITICAL">Critical</option>
                     <option value="HIGH">High</option>
@@ -256,27 +259,30 @@ export const CasesPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-slate-700 font-bold uppercase mb-1">Assigned Analyst</label>
+                  <label className="block text-soc-text font-bold uppercase mb-1">Assigned Analyst</label>
                   <input
                     type="text"
                     value={assignedTo}
                     onChange={e => setAssignedTo(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 focus:outline-none focus:border-emerald-500"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-soc-secondary border border-soc-border text-soc-text focus:outline-none focus:border-soc-accent"
                   />
                 </div>
               </div>
 
-              <div className="flex justify-end space-x-2 pt-3 border-t border-slate-200">
+              <div className="flex justify-end space-x-2 pt-3 border-t border-soc-border">
                 <button
                   type="button"
                   onClick={() => setShowCreateModal(false)}
-                  className="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 font-bold hover:bg-slate-200 transition-colors"
+                  className="px-4 py-2 rounded-xl bg-soc-secondary text-soc-text font-bold hover:bg-soc-cardHover transition-colors border border-soc-border"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-md shadow-emerald-600/25 transition-all"
+                  className="px-5 py-2 rounded-xl text-white font-bold shadow-md transition-all"
+                  style={{
+                    background: 'linear-gradient(135deg, var(--soc-accent) 0%, #D97706 100%)',
+                  }}
                 >
                   Create Case
                 </button>

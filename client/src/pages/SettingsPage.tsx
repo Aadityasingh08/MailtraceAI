@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Settings, Key, Users, Shield, Save, CheckCircle, Database, Palette, Sparkles, Check, Moon, Sun } from 'lucide-react';
+import { Settings, Key, Users, Shield, Save, CheckCircle, Database, Palette, Sparkles, Check, Moon, Sun, Layers } from 'lucide-react';
 import { api } from '../services/api';
 import { useAuth } from '../context/AuthContext';
-import { useTheme, THEME_OPTIONS } from '../context/ThemeContext';
+import { useTheme, THEME_OPTIONS, BACKGROUND_OPTIONS } from '../context/ThemeContext';
 import { User } from '../types';
 
 export const SettingsPage: React.FC = () => {
   const { user } = useAuth();
-  const { colorTheme, setColorTheme } = useTheme();
+  const { theme, setTheme, bgStyle, setBgStyle, colorTheme, setColorTheme } = useTheme();
   const isAdmin = user?.role === 'ADMIN';
 
   // System settings state
@@ -100,72 +100,101 @@ export const SettingsPage: React.FC = () => {
       </div>
 
       {/* Theme & Visual Appearance Selection Card */}
-      <div className="glass-panel p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+      <div className="glass-panel p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-5">
         <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
           <div className="flex items-center space-x-2">
             <Palette className="w-5 h-5 text-soc-accent" style={{ color: 'var(--soc-accent)' }} />
             <div>
               <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 font-mono uppercase">
-                Visual Appearance & SOC Color Themes
+                Visual Appearance & Background Atmosphere
               </h3>
               <p className="text-[11px] text-slate-500 font-sans">
-                Choose your preferred SOC operational display profile, contrast intensity, and glowing cyber accents.
+                Customize your background atmosphere and color accents so all content is clearly visible.
               </p>
             </div>
           </div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-soc-border text-soc-muted">
-            {THEME_OPTIONS.length} Curated Styles
-          </span>
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={() => setTheme('light')}
+              className={`px-3 py-1 rounded-lg text-xs font-bold border transition-all ${
+                theme === 'light' ? 'bg-white text-slate-900 border-sky-500 shadow-sm' : 'border-soc-border text-soc-muted'
+              }`}
+            >
+              ☀️ Light
+            </button>
+            <button
+              onClick={() => setTheme('dark')}
+              className={`px-3 py-1 rounded-lg text-xs font-bold border transition-all ${
+                theme === 'dark' ? 'bg-soc-secondary text-white border-soc-accent shadow-sm' : 'border-soc-border text-soc-muted'
+              }`}
+            >
+              🌙 Dark
+            </button>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 pt-1">
-          {THEME_OPTIONS.map((opt) => {
-            const isSelected = colorTheme === opt.id;
-            return (
-              <button
-                key={opt.id}
-                onClick={() => setColorTheme(opt.id)}
-                className={`relative flex flex-col p-3 rounded-xl border text-left transition-all ${
-                  isSelected
-                    ? 'ring-2 shadow-lg border-transparent'
-                    : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 bg-slate-50/50 dark:bg-slate-800/40'
-                }`}
-                style={{
-                  boxShadow: isSelected ? `0 0 16px -2px ${opt.accentColor}50` : undefined,
-                  borderColor: isSelected ? opt.accentColor : undefined,
-                }}
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span 
-                    className="w-4 h-4 rounded-full ring-2 ring-white/20"
-                    style={{ backgroundColor: opt.accentColor }} 
-                  />
-                  {opt.isDark ? (
-                    <Moon className="w-3 h-3 text-slate-400" />
-                  ) : (
-                    <Sun className="w-3 h-3 text-amber-500" />
-                  )}
-                </div>
-                <div className="font-bold text-xs text-slate-900 dark:text-slate-100">
-                  {opt.name}
-                </div>
-                <div className="text-[10px] text-slate-500 line-clamp-1 mb-2">
-                  {opt.subtitle}
-                </div>
-                <div className="mt-auto flex items-center justify-between pt-1 border-t border-slate-200/50 dark:border-slate-800/50">
-                  <div className={`h-1.5 w-10 rounded-full bg-gradient-to-r ${opt.gradientClass}`} />
-                  {isSelected && (
-                    <span 
-                      className="text-[10px] font-bold px-1.5 py-0.2 rounded"
-                      style={{ color: opt.accentColor }}
-                    >
-                      Active
-                    </span>
-                  )}
-                </div>
-              </button>
-            );
-          })}
+        {/* Background Atmosphere Options */}
+        <div>
+          <h4 className="text-xs font-bold text-soc-text uppercase font-mono mb-2 flex items-center gap-1.5">
+            <Layers className="w-3.5 h-3.5 text-soc-accent" />
+            Background Color Profiles (Pick what looks best to your eyes)
+          </h4>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+            {BACKGROUND_OPTIONS.map((bg) => {
+              const isSelected = bgStyle === bg.id;
+              return (
+                <button
+                  key={bg.id}
+                  onClick={() => setBgStyle(bg.id)}
+                  className={`p-3 rounded-xl border text-left transition-all ${
+                    isSelected ? 'border-soc-accent ring-2 ring-soc-accent/40 shadow-md' : 'border-soc-border'
+                  }`}
+                  style={{ backgroundColor: bg.bgHex }}
+                >
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="w-3 h-3 rounded-full border border-white/20" style={{ backgroundColor: bg.cardHex }} />
+                    {isSelected && <Check className={`w-3.5 h-3.5 ${bg.isDark ? 'text-amber-400' : 'text-sky-600'}`} />}
+                  </div>
+                  <div className={`text-xs font-bold truncate ${bg.isDark ? 'text-white' : 'text-slate-900'}`}>
+                    {bg.name}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Accent Color Styles */}
+        <div className="pt-2 border-t border-soc-border/50">
+          <h4 className="text-xs font-bold text-soc-text uppercase font-mono mb-2 flex items-center gap-1.5">
+            <Palette className="w-3.5 h-3.5 text-soc-accent" />
+            Accent Themes
+          </h4>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+            {THEME_OPTIONS.map((opt) => {
+              const isSelected = colorTheme === opt.id;
+              return (
+                <button
+                  key={opt.id}
+                  onClick={() => setColorTheme(opt.id)}
+                  className={`p-2.5 rounded-xl border text-left transition-all ${
+                    isSelected
+                      ? 'ring-2 shadow-sm border-transparent'
+                      : 'border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40'
+                  }`}
+                  style={{
+                    borderColor: isSelected ? opt.accentColor : undefined,
+                  }}
+                >
+                  <div className="flex items-center space-x-1.5 mb-1.5">
+                    <span className="w-3 h-3 rounded-full" style={{ backgroundColor: opt.accentColor }} />
+                    <span className="font-bold text-xs text-soc-text truncate">{opt.name.split(' ')[0]}</span>
+                  </div>
+                  <div className={`h-1.5 w-full rounded-full bg-gradient-to-r ${opt.gradientClass}`} />
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 

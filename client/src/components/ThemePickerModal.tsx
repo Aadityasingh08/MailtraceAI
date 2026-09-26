@@ -1,6 +1,6 @@
 import React from 'react';
-import { X, Check, Sparkles, Moon, Sun, Monitor } from 'lucide-react';
-import { useTheme, THEME_OPTIONS, ColorTheme } from '../context/ThemeContext';
+import { X, Check, Sparkles, Moon, Sun, Layers, Paintbrush } from 'lucide-react';
+import { useTheme, THEME_OPTIONS, BACKGROUND_OPTIONS, BackgroundStyle } from '../context/ThemeContext';
 
 interface ThemePickerModalProps {
   isOpen: boolean;
@@ -8,24 +8,18 @@ interface ThemePickerModalProps {
 }
 
 export const ThemePickerModal: React.FC<ThemePickerModalProps> = ({ isOpen, onClose }) => {
-  const { colorTheme, setColorTheme } = useTheme();
+  const { theme, toggleTheme, setTheme, bgStyle, setBgStyle, colorTheme, setColorTheme } = useTheme();
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-in fade-in duration-200">
       <div 
-        className="w-full max-w-xl rounded-2xl bg-soc-card border border-soc-border shadow-2xl p-6 relative overflow-hidden"
+        className="w-full max-w-2xl rounded-2xl bg-soc-card border border-soc-border shadow-2xl p-6 relative overflow-hidden"
         style={{
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px -5px var(--soc-border-glow)'
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px -5px var(--soc-border-glow)'
         }}
       >
-        {/* Glow ambient background accent */}
-        <div 
-          className="absolute -top-24 -right-24 w-64 h-64 rounded-full blur-3xl opacity-20 pointer-events-none"
-          style={{ background: 'var(--soc-accent)' }}
-        />
-
         {/* Header */}
         <div className="flex items-center justify-between pb-4 border-b border-soc-border">
           <div className="flex items-center space-x-3">
@@ -37,13 +31,10 @@ export const ThemePickerModal: React.FC<ThemePickerModalProps> = ({ isOpen, onCl
             </div>
             <div>
               <h2 className="text-lg font-bold text-soc-text flex items-center gap-2">
-                Interface Color Themes
-                <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border border-soc-border text-soc-muted">
-                  {THEME_OPTIONS.length} Curated Styles
-                </span>
+                Display & Background Appearance
               </h2>
               <p className="text-xs text-soc-muted">
-                Select your preferred visual atmosphere, contrast ratio, and SOC accent palette.
+                Customize your background atmosphere and accent palette for maximum visibility and eye comfort.
               </p>
             </div>
           </div>
@@ -55,88 +46,147 @@ export const ThemePickerModal: React.FC<ThemePickerModalProps> = ({ isOpen, onCl
           </button>
         </div>
 
-        {/* Theme Options Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 my-5 max-h-[60vh] overflow-y-auto pr-1">
-          {THEME_OPTIONS.map((opt) => {
-            const isSelected = colorTheme === opt.id;
-            return (
-              <button
-                key={opt.id}
-                onClick={() => setColorTheme(opt.id)}
-                className={`relative flex flex-col text-left p-3.5 rounded-xl border transition-all duration-200 group ${
-                  isSelected
-                    ? 'border-transparent ring-2 shadow-lg'
-                    : 'border-soc-border hover:border-soc-borderStrong bg-soc-secondary/60 hover:bg-soc-secondary'
-                }`}
-                style={{
-                  background: isSelected ? 'var(--soc-cardHover)' : undefined,
-                  boxShadow: isSelected ? `0 0 20px -3px ${opt.accentColor}40` : undefined,
-                  borderColor: isSelected ? opt.accentColor : undefined,
-                }}
-              >
-                {/* Header row with color circles & badge */}
-                <div className="flex items-center justify-between mb-2.5">
-                  <div className="flex items-center space-x-2">
-                    <span 
-                      className="w-4 h-4 rounded-full shadow-sm ring-2 ring-white/20 transition-transform group-hover:scale-110" 
-                      style={{ backgroundColor: opt.accentColor }} 
-                    />
-                    <span className="font-semibold text-sm text-soc-text">
-                      {opt.name}
-                    </span>
-                  </div>
+        {/* Section 1: Quick Light / Dark Mode Toggle */}
+        <div className="my-5 p-4 rounded-xl border border-soc-border bg-soc-secondary/60">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-xs font-bold text-soc-text uppercase tracking-wider font-mono flex items-center gap-1.5">
+              <Sun className="w-4 h-4 text-amber-500" />
+              1. Theme Mode (Dark or Light)
+            </span>
+            <span className="text-[11px] font-mono font-bold text-soc-muted">
+              Current: <span className="text-soc-accent uppercase">{theme}</span>
+            </span>
+          </div>
 
-                  {opt.isDark ? (
-                    <Moon className="w-3.5 h-3.5 text-soc-muted" />
-                  ) : (
-                    <Sun className="w-3.5 h-3.5 text-amber-500" />
-                  )}
-                </div>
+          <div className="grid grid-cols-2 gap-3">
+            <button
+              onClick={() => setTheme('dark')}
+              className={`flex items-center justify-center space-x-2.5 py-3 px-4 rounded-xl border font-bold text-xs transition-all ${
+                theme === 'dark'
+                  ? 'bg-soc-card border-soc-accent text-white shadow-lg ring-1 ring-soc-accent'
+                  : 'bg-soc-card/50 border-soc-border text-soc-muted hover:text-soc-text hover:border-soc-borderStrong'
+              }`}
+            >
+              <Moon className="w-4 h-4 text-amber-400" />
+              <span>🌙 Dark Mode (Eye Comfort)</span>
+              {theme === 'dark' && <Check className="w-3.5 h-3.5 text-soc-accent ml-auto" />}
+            </button>
 
-                <p className="text-xs text-soc-muted mb-3">
-                  {opt.subtitle}
-                </p>
-
-                {/* Color gradient preview strip */}
-                <div className="mt-auto flex items-center justify-between pt-2 border-t border-soc-border/50">
-                  <div className="flex items-center space-x-1.5">
-                    <div className={`h-2.5 w-16 rounded-full bg-gradient-to-r ${opt.gradientClass}`} />
-                    <span className="text-[10px] font-mono text-soc-muted">
-                      {opt.badge}
-                    </span>
-                  </div>
-
-                  {isSelected && (
-                    <span 
-                      className="flex items-center space-x-1 text-xs font-bold px-2 py-0.5 rounded-full"
-                      style={{ 
-                        color: opt.accentColor, 
-                        backgroundColor: `${opt.accentColor}18`,
-                        border: `1px solid ${opt.accentColor}40` 
-                      }}
-                    >
-                      <Check className="w-3 h-3" />
-                      <span>Active</span>
-                    </span>
-                  )}
-                </div>
-              </button>
-            );
-          })}
+            <button
+              onClick={() => setTheme('light')}
+              className={`flex items-center justify-center space-x-2.5 py-3 px-4 rounded-xl border font-bold text-xs transition-all ${
+                theme === 'light'
+                  ? 'bg-white border-sky-500 text-slate-900 shadow-lg ring-1 ring-sky-500'
+                  : 'bg-soc-card/50 border-soc-border text-soc-muted hover:text-soc-text hover:border-soc-borderStrong'
+              }`}
+            >
+              <Sun className="w-4 h-4 text-amber-500" />
+              <span>☀️ Light Mode (Clean Sunlight)</span>
+              {theme === 'light' && <Check className="w-3.5 h-3.5 text-sky-600 ml-auto" />}
+            </button>
+          </div>
         </div>
 
-        {/* Footer info & close */}
-        <div className="pt-3 border-t border-soc-border flex items-center justify-between text-xs text-soc-muted">
-          <div className="flex items-center space-x-2">
-            <Monitor className="w-3.5 h-3.5" />
-            <span>Theme auto-saves to your local browser profile</span>
+        {/* Section 2: Background Atmosphere Options */}
+        <div className="my-5">
+          <div className="flex items-center justify-between mb-2.5">
+            <span className="text-xs font-bold text-soc-text uppercase tracking-wider font-mono flex items-center gap-1.5">
+              <Layers className="w-4 h-4 text-soc-accent" />
+              2. Background Atmosphere Color
+            </span>
+            <span className="text-[10px] text-soc-muted font-mono">
+              6 Options
+            </span>
           </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+            {BACKGROUND_OPTIONS.map((bg) => {
+              const isSelected = bgStyle === bg.id;
+              return (
+                <button
+                  key={bg.id}
+                  onClick={() => setBgStyle(bg.id)}
+                  className={`relative p-3 rounded-xl border text-left transition-all group ${
+                    isSelected
+                      ? 'border-soc-accent ring-2 ring-soc-accent/40 shadow-md'
+                      : 'border-soc-border hover:border-soc-borderStrong'
+                  }`}
+                  style={{
+                    backgroundColor: bg.bgHex,
+                  }}
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <div className="flex items-center space-x-2">
+                      <span 
+                        className="w-3.5 h-3.5 rounded-full border border-white/20 shadow-sm"
+                        style={{ backgroundColor: bg.cardHex }}
+                      />
+                      <span className={`text-xs font-bold ${bg.isDark ? 'text-white' : 'text-slate-900'}`}>
+                        {bg.name}
+                      </span>
+                    </div>
+                    {isSelected && (
+                      <Check className={`w-3.5 h-3.5 ${bg.isDark ? 'text-amber-400' : 'text-sky-600'}`} />
+                    )}
+                  </div>
+                  <p className={`text-[10px] line-clamp-1 ${bg.isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+                    {bg.subtitle}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Section 3: Accent Color Palettes */}
+        <div className="my-5">
+          <div className="flex items-center justify-between mb-2.5">
+            <span className="text-xs font-bold text-soc-text uppercase tracking-wider font-mono flex items-center gap-1.5">
+              <Paintbrush className="w-4 h-4 text-soc-accent" />
+              3. Accent Color Palette
+            </span>
+            <span className="text-[10px] text-soc-muted font-mono">
+              5 Styles
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+            {THEME_OPTIONS.filter(o => o.id !== 'arctic-light').map((opt) => {
+              const isSelected = colorTheme === opt.id;
+              return (
+                <button
+                  key={opt.id}
+                  onClick={() => setColorTheme(opt.id)}
+                  className={`p-2.5 rounded-xl border text-left transition-all ${
+                    isSelected
+                      ? 'border-soc-accent bg-soc-secondary ring-1 ring-soc-accent'
+                      : 'border-soc-border bg-soc-secondary/50 hover:bg-soc-secondary'
+                  }`}
+                >
+                  <div className="flex items-center space-x-1.5 mb-1">
+                    <span 
+                      className="w-2.5 h-2.5 rounded-full" 
+                      style={{ backgroundColor: opt.accentColor }} 
+                    />
+                    <span className="text-xs font-bold text-soc-text truncate">
+                      {opt.name.split(' ')[0]}
+                    </span>
+                  </div>
+                  <div className={`h-1.5 w-full rounded-full bg-gradient-to-r ${opt.gradientClass}`} />
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="pt-3 border-t border-soc-border flex items-center justify-between text-xs text-soc-muted">
+          <span>Changes apply instantly & save to your browser</span>
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-xl text-white font-medium text-xs transition-all shadow-md"
+            className="px-4 py-2 rounded-xl text-white font-bold text-xs transition-all shadow-md"
             style={{
               background: 'linear-gradient(135deg, var(--soc-accent) 0%, #2563EB 100%)',
-              boxShadow: '0 4px 15px -3px var(--soc-accent-glow)'
             }}
           >
             Apply & Done

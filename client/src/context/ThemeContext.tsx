@@ -1,7 +1,68 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-export type ColorTheme = 'onyx-amber' | 'linear-mono' | 'nordic-sage' | 'cyber-cyan' | 'matrix-emerald' | 'arctic-light';
 export type ThemeMode = 'light' | 'dark';
+export type BackgroundStyle = 'obsidian' | 'midnight-navy' | 'pure-black' | 'warm-charcoal' | 'clean-slate' | 'crisp-white';
+export type ColorTheme = 'onyx-amber' | 'linear-mono' | 'nordic-sage' | 'cyber-cyan' | 'matrix-emerald' | 'arctic-light';
+
+export interface BackgroundOption {
+  id: BackgroundStyle;
+  name: string;
+  subtitle: string;
+  bgHex: string;
+  cardHex: string;
+  isDark: boolean;
+}
+
+export const BACKGROUND_OPTIONS: BackgroundOption[] = [
+  {
+    id: 'obsidian',
+    name: 'Obsidian Velvet',
+    subtitle: 'Deep Matte Dark — High Contrast & Maximum Readability',
+    bgHex: '#0B0D13',
+    cardHex: '#131822',
+    isDark: true,
+  },
+  {
+    id: 'midnight-navy',
+    name: 'Midnight Navy',
+    subtitle: 'Rich Oceanic Blue — Executive SOC Ambiance',
+    bgHex: '#0A1020',
+    cardHex: '#101C38',
+    isDark: true,
+  },
+  {
+    id: 'pure-black',
+    name: 'Pure OLED Black',
+    subtitle: 'Absolute Pitch Black — Ultra Sharp Elements',
+    bgHex: '#000000',
+    cardHex: '#0E0E12',
+    isDark: true,
+  },
+  {
+    id: 'warm-charcoal',
+    name: 'Warm Charcoal',
+    subtitle: 'Earthy Matte Gray — Soft on the Eyes',
+    bgHex: '#121316',
+    cardHex: '#1B1C22',
+    isDark: true,
+  },
+  {
+    id: 'clean-slate',
+    name: 'Daylight Slate (Light)',
+    subtitle: 'Soft Clean Light — Crystal Clear Sunlight Visibility',
+    bgHex: '#F1F5F9',
+    cardHex: '#FFFFFF',
+    isDark: false,
+  },
+  {
+    id: 'crisp-white',
+    name: 'Crisp Studio White (Light)',
+    subtitle: 'Pure Clean Paper White — Maximum Brightness',
+    bgHex: '#FFFFFF',
+    cardHex: '#F8FAFC',
+    isDark: false,
+  },
+];
 
 export interface ThemeOption {
   id: ColorTheme;
@@ -71,39 +132,47 @@ export const THEME_OPTIONS: ThemeOption[] = [
 ];
 
 interface ThemeContextType {
-  colorTheme: ColorTheme;
-  setColorTheme: (theme: ColorTheme) => void;
-  theme: ThemeMode; // 'light' | 'dark' for backward compatibility
+  theme: ThemeMode; // 'dark' | 'light'
   toggleTheme: () => void;
   setTheme: (mode: ThemeMode) => void;
+  
+  bgStyle: BackgroundStyle;
+  setBgStyle: (bg: BackgroundStyle) => void;
+
+  colorTheme: ColorTheme;
+  setColorTheme: (theme: ColorTheme) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  // Theme Mode: dark or light
+  const [theme, setThemeState] = useState<ThemeMode>(() => {
+    const saved = localStorage.getItem('mailtrace_mode') as ThemeMode | null;
+    if (saved === 'dark' || saved === 'light') return saved;
+    return 'dark';
+  });
+
+  // Background Style
+  const [bgStyle, setBgStyleState] = useState<BackgroundStyle>(() => {
+    const saved = localStorage.getItem('mailtrace_bg') as BackgroundStyle | null;
+    if (saved && BACKGROUND_OPTIONS.some(b => b.id === saved)) return saved;
+    return 'obsidian';
+  });
+
+  // Accent Color Theme
   const [colorTheme, setColorThemeState] = useState<ColorTheme>(() => {
     const saved = localStorage.getItem('mailtrace_color_theme') as ColorTheme | null;
-    if (saved && THEME_OPTIONS.some(t => t.id === saved)) {
-      return saved;
-    }
-    // Default to the handcrafted Onyx Amber theme (Unique, no AI clichés)
+    if (saved && THEME_OPTIONS.some(t => t.id === saved)) return saved;
     return 'onyx-amber';
   });
 
-  const currentOption = THEME_OPTIONS.find(t => t.id === colorTheme) || THEME_OPTIONS[0];
-  const themeMode: ThemeMode = currentOption.isDark ? 'dark' : 'light';
-
+  // Sync with document element and localStorage
   useEffect(() => {
     const root = document.documentElement;
-    // Remove all previous theme classes
-    THEME_OPTIONS.forEach(t => {
-      root.classList.remove(`theme-${t.id}`);
-    });
-    
-    // Add current theme class
-    root.classList.add(`theme-${colorTheme}`);
 
-    if (currentOption.isDark) {
+    // 1. Dark/Light class & colorScheme
+    if (theme === 'dark') {
       root.classList.add('dark');
       root.style.colorScheme = 'dark';
     } else {
@@ -111,19 +180,48 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       root.style.colorScheme = 'light';
     }
 
+    // 2. Background data attribute
+    root.setAttribute('data-bg', bgStyle);
+
+    // 3. Accent theme class
+    THEME_OPTIONS.forEach(t => {
+      root.classList.remove(`theme-${t.id}`);
+    });
+    root.classList.add(`theme-${colorTheme}`);
+
+    // Persist
+    localStorage.setItem('mailtrace_mode', theme);
+    localStorage.setItem('mailtrace_theme', theme);
+    localStorage.setItem('mailtrace_bg', bgStyle);
     localStorage.setItem('mailtrace_color_theme', colorTheme);
-    localStorage.setItem('mailtrace_theme', themeMode);
-  }, [colorTheme, currentOption.isDark, themeMode]);
+  }, [theme, bgStyle, colorTheme]);
 
   const toggleTheme = () => {
-    setColorThemeState(prev => (prev === 'arctic-light' ? 'onyx-amber' : 'arctic-light'));
+    setThemeState(prev => {
+      const next = prev === 'dark' ? 'light' : 'dark';
+      if (next === 'light') {
+        setBgStyleState('clean-slate');
+      } else {
+        setBgStyleState('obsidian');
+      }
+      return next;
+    });
   };
 
   const setTheme = (mode: ThemeMode) => {
+    setThemeState(mode);
     if (mode === 'light') {
-      setColorThemeState('arctic-light');
+      setBgStyleState('clean-slate');
     } else {
-      setColorThemeState(prev => (prev === 'arctic-light' ? 'onyx-amber' : prev));
+      setBgStyleState('obsidian');
+    }
+  };
+
+  const setBgStyle = (bg: BackgroundStyle) => {
+    setBgStyleState(bg);
+    const opt = BACKGROUND_OPTIONS.find(b => b.id === bg);
+    if (opt) {
+      setThemeState(opt.isDark ? 'dark' : 'light');
     }
   };
 
@@ -132,7 +230,15 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   };
 
   return (
-    <ThemeContext.Provider value={{ colorTheme, setColorTheme, theme: themeMode, toggleTheme, setTheme }}>
+    <ThemeContext.Provider value={{ 
+      theme, 
+      toggleTheme, 
+      setTheme, 
+      bgStyle, 
+      setBgStyle, 
+      colorTheme, 
+      setColorTheme 
+    }}>
       {children}
     </ThemeContext.Provider>
   );

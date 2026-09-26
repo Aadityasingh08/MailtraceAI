@@ -123,37 +123,37 @@ export const Navbar: React.FC = () => {
                 </kbd>
               </button>
 
-              {/* Theme Palette Modal Trigger */}
-              <button
-                onClick={() => setThemePickerOpen(true)}
-                className="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-all border border-slate-200 dark:border-slate-700 group shadow-sm"
-                title={`Current Theme: ${activeThemeObj.name} (Click to switch)`}
-                aria-label="Change color theme"
-              >
-                <div className="relative flex items-center justify-center">
-                  <Palette className="w-4 h-4 transition-transform group-hover:rotate-45" style={{ color: activeThemeObj.accentColor }} />
-                  <span 
-                    className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full ring-1 ring-soc-bg"
-                    style={{ backgroundColor: activeThemeObj.accentColor }}
-                  />
-                </div>
-                <span className="hidden xl:inline text-xs font-semibold">
-                  {activeThemeObj.name.split(' ')[0]}
-                </span>
-              </button>
-
-              {/* Theme Toggle Button */}
+              {/* Prominent Light / Dark Quick Switch */}
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-all border border-slate-200 dark:border-slate-700"
-                title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+                className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-soc-secondary hover:bg-soc-cardHover text-soc-text transition-all border border-soc-border shadow-sm font-mono text-xs font-bold"
+                title={`Click to switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
                 aria-label="Toggle Dark and Light theme"
               >
                 {theme === 'dark' ? (
-                  <Sun className="w-4 h-4 text-amber-400 animate-in spin-in-90" />
+                  <>
+                    <Sun className="w-4 h-4 text-amber-400" />
+                    <span className="hidden sm:inline">Light Mode</span>
+                  </>
                 ) : (
-                  <Moon className="w-4 h-4 text-emerald-700 animate-in spin-in-90" />
+                  <>
+                    <Moon className="w-4 h-4 text-indigo-600" />
+                    <span className="hidden sm:inline">Dark Mode</span>
+                  </>
                 )}
+              </button>
+
+              {/* Background & Palette Picker Trigger */}
+              <button
+                onClick={() => setThemePickerOpen(true)}
+                className="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-xl bg-soc-secondary hover:bg-soc-cardHover text-soc-text transition-all border border-soc-border group shadow-sm"
+                title="Change Background Atmosphere & Palette"
+                aria-label="Change Background and Color Palette"
+              >
+                <Palette className="w-4 h-4 text-soc-accent transition-transform group-hover:rotate-45" style={{ color: 'var(--soc-accent)' }} />
+                <span className="hidden xl:inline text-xs font-semibold text-soc-text">
+                  Background
+                </span>
               </button>
 
               {/* Live SOC Badge */}
