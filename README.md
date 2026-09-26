@@ -1,24 +1,20 @@
-# 🛡️ MailTrace AI — Autonomous Email Threat Detection & Forensic Intelligence Platform
-
 <p align="center">
-  <img src="./docs/assets/mailtrace_hero_banner.jpg" alt="MailTrace AI SOC Dashboard Banner" width="100%" style="border-radius: 14px; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.6);" />
+  <img src="./docs/assets/mailtrace_header.svg" alt="MailTrace AI — Autonomous Email Threat Detection &amp; SOC Forensics Platform" width="100%" />
 </p>
 
-<p align="center">
+<div align="center">
   <a href="https://mailtrace-ai-ten.vercel.app" target="_blank">
-    <img src="https://img.shields.io/badge/Live%20Platform-Vercel%20Production-10B981?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
+    <img src="https://img.shields.io/badge/🚀%20Live%20Platform-Vercel%20Production-10B981?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
   </a>
   &nbsp;
   <a href="https://mailtraceai.onrender.com/health" target="_blank">
-    <img src="https://img.shields.io/badge/API%20Engine-Render%20Online-06B6D4?style=for-the-badge&logo=render&logoColor=white" alt="API Engine" />
+    <img src="https://img.shields.io/badge/⚡%20API%20Engine-Render%20Online-06B6D4?style=for-the-badge&logo=render&logoColor=white" alt="API Engine" />
   </a>
   &nbsp;
   <a href="https://github.com/Aadityasingh08/MailtraceAI" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-Repo%20Official-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" />
+    <img src="https://img.shields.io/badge/💻%20GitHub-Repo%20Official-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo" />
   </a>
-</p>
-
-<p align="center">
+  <br /><br />
   <img src="https://img.shields.io/badge/Security-SOC%20Forensics-emerald?style=flat-square&logo=shield" alt="SOC Forensics" />
   <img src="https://img.shields.io/badge/React%2019-TypeScript-blue?style=flat-square&logo=react" alt="React 19" />
   <img src="https://img.shields.io/badge/Node.js-Express%20API-green?style=flat-square&logo=node.js" alt="Node.js" />
@@ -27,11 +23,11 @@
   <img src="https://img.shields.io/badge/RFC%205322-Compliant-orange?style=flat-square" alt="RFC 5322" />
   <img src="https://img.shields.io/badge/License-MIT-purple?style=flat-square" alt="License MIT" />
   <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen?style=flat-square" alt="PRs Welcome" />
-</p>
-
-<p align="center">
-  <b>An enterprise-grade Security Operations Center (SOC) platform for autonomous email parsing, RFC 5322 header forensics, multi-hop relay telemetry, optical QR Quishing analysis, threat actor attribution, and automated SOAR playbook containment.</b>
-</p>
+  <br /><br />
+  <p>
+    <b>An enterprise-grade Security Operations Center (SOC) platform for autonomous email parsing, RFC 5322 header forensics, multi-hop relay telemetry, optical QR Quishing analysis, threat actor attribution, and automated SOAR playbook containment.</b>
+  </p>
+</div>
 
 ---
 
@@ -45,9 +41,9 @@
 
 ## 📌 Executive Overview
 
-**MailTrace AI** is built specifically for Tier-1/Tier-2 SOC analysts, DFIR incident response teams, and threat intelligence researchers. It transforms raw RFC 5322 `.eml` files into **actionable, explainable forensic intelligence** in seconds.
+**MailTrace AI** is an enterprise platform engineered for Tier-1/Tier-2 SOC analysts, DFIR teams, and threat intelligence researchers. It converts raw RFC 5322 `.eml` transmission headers into **actionable, explainable forensic intelligence** in seconds.
 
-By unifying optical QR code decoding, multi-hop MTA relay telemetry, state-sponsored APT attribution, and automated 1-click SOAR playbooks into a single cockpit, MailTrace AI dramatically reduces Mean Time to Detect (MTTD) and Mean Time to Remediate (MTTR) for critical phishing attacks.
+By combining optical QR code decoding, multi-hop MTA relay telemetry, state-sponsored APT attribution, and automated 1-click SOAR playbooks into a unified workspace, MailTrace AI drastically reduces Mean Time to Detect (MTTD) and Mean Time to Remediate (MTTR) for targeted spearphishing attacks.
 
 ---
 
@@ -75,7 +71,7 @@ flowchart LR
 
 ---
 
-## 🌟 Visual Highlights & Key Features
+## 🌟 Key Capabilities & Modules
 
 | Category | Capability | Forensic Advantage |
 | :--- | :--- | :--- |
@@ -193,7 +189,7 @@ MailtraceAI/
 │   └── dist/                   # Production pre-compiled JavaScript bundle
 ├── docs/                       # Visual assets, banners, and diagrams
 │   └── assets/
-│       ├── mailtrace_hero_banner.jpg      # High-res SOC dashboard hero banner
+│       ├── mailtrace_header.svg           # Razor-sharp vector SOC title banner
 │       └── email_threat_pipeline.jpg      # End-to-end forensic pipeline diagram
 ├── start.bat                   # 1-Click Windows Launcher
 ├── start.ps1                   # 1-Click PowerShell Launcher
