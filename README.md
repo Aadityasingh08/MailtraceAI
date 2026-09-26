@@ -11,18 +11,23 @@
 </p>
 
 <p align="center">
-  <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAadityasingh08%2FMailtraceAI&root-directory=client" target="_blank">
-    <img src="https://vercel.com/button" alt="Deploy with Vercel" height="32" />
+  <a href="https://mailtrace-ai-ten.vercel.app" target="_blank">
+    <img src="https://img.shields.io/badge/Live%20Demo-Vercel%20Production-10B981?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://render.com/deploy?repo=https://github.com/Aadityasingh08/MailtraceAI" target="_blank">
-    <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render" height="32" />
+    <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render" height="28" />
   </a>
+</p>
+
+<p align="center">
+  🚀 <b>Live Vercel URL:</b> <a href="https://mailtrace-ai-ten.vercel.app" target="_blank"><b>https://mailtrace-ai-ten.vercel.app</b></a>
 </p>
 
 <p align="center">
   <b>A next-generation Security Operations Center (SOC) platform for autonomous email parsing, RFC 5322 header forensics, multi-hop relay telemetry, MITRE ATT&CK mapping, and automated YARA/Sigma detection engineering.</b>
 </p>
+
 
 
 ---
