@@ -18,7 +18,11 @@ import {
   Check,
   ChevronRight,
   ArrowRight,
-  Terminal
+  Terminal,
+  QrCode,
+  Skull,
+  Zap,
+  Brain
 } from 'lucide-react';
 import { api } from '../services/api';
 import { InvestigationDetail, ExtractedIOC } from '../types';
@@ -38,6 +42,10 @@ import { WhatNextCard } from '../components/WhatNextCard';
 import { AnalystNotesPanel } from '../components/AnalystNotesPanel';
 import { ExportReportModal } from '../components/ExportReportModal';
 import { DetectionRulesModal } from '../components/DetectionRulesModal';
+import { QuishingScannerModal } from '../components/QuishingScannerModal';
+import { ThreatActorProfilerModal } from '../components/ThreatActorProfilerModal';
+import { SoarPlaybookModal } from '../components/SoarPlaybookModal';
+import { PsychologicalCueInspector } from '../components/PsychologicalCueInspector';
 
 export const InvestigatePage: React.FC = () => {
   const { id } = useParams<{ id?: string }>();
@@ -59,6 +67,9 @@ export const InvestigatePage: React.FC = () => {
   const [showExportModal, setShowExportModal] = useState(false);
   const [showCreateCaseModal, setShowCreateCaseModal] = useState(false);
   const [showRulesModal, setShowRulesModal] = useState(false);
+  const [showQuishingModal, setShowQuishingModal] = useState(false);
+  const [showThreatActorModal, setShowThreatActorModal] = useState(false);
+  const [showSoarModal, setShowSoarModal] = useState(false);
   const [caseTitle, setCaseTitle] = useState('');
   const [casePriority, setCasePriority] = useState('HIGH');
   const [copiedSha, setCopiedSha] = useState(false);
@@ -180,15 +191,42 @@ export const InvestigatePage: React.FC = () => {
         </div>
 
         {/* Action Buttons if Investigation Loaded */}
-        {detail && (
+        {detail ? (
           <div className="flex flex-wrap items-center gap-2">
             <button
+              onClick={() => setShowQuishingModal(true)}
+              className="flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-purple-50 dark:bg-purple-950/60 hover:bg-purple-100 dark:hover:bg-purple-900/60 border border-purple-300 dark:border-purple-700 text-xs font-bold text-purple-800 dark:text-purple-300 transition-colors shadow-sm"
+              title="Decode weaponized QR code quishing attachments"
+            >
+              <QrCode className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+              <span>Quishing Scanner</span>
+            </button>
+
+            <button
+              onClick={() => setShowThreatActorModal(true)}
+              className="flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-red-50 dark:bg-red-950/60 hover:bg-red-100 dark:hover:bg-red-900/60 border border-red-300 dark:border-red-700 text-xs font-bold text-red-800 dark:text-red-300 transition-colors shadow-sm"
+              title="Attribution to Lazarus, FIN7, APT29 & Cybercrime Syndicates"
+            >
+              <Skull className="w-4 h-4 text-red-600 dark:text-red-400" />
+              <span>APT Profiler</span>
+            </button>
+
+            <button
+              onClick={() => setShowSoarModal(true)}
+              className="flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 dark:hover:bg-amber-900/60 border border-amber-300 dark:border-amber-700 text-xs font-bold text-amber-800 dark:text-amber-300 transition-colors shadow-sm"
+              title="Execute Automated SOAR Response & Containment Playbook"
+            >
+              <Zap className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+              <span>SOAR Playbook</span>
+            </button>
+
+            <button
               onClick={() => setShowRulesModal(true)}
-              className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 border border-emerald-300 dark:border-emerald-700 text-xs font-bold text-emerald-800 dark:text-emerald-300 transition-colors shadow-sm"
+              className="flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 border border-emerald-300 dark:border-emerald-700 text-xs font-bold text-emerald-800 dark:text-emerald-300 transition-colors shadow-sm"
               title="Generate SIEM/EDR Detection Rules (YARA, Sigma, Suricata)"
             >
               <Terminal className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-              <span>Detection Rules (YARA/Sigma)</span>
+              <span>Detection Rules</span>
             </button>
 
             <button
@@ -196,18 +234,42 @@ export const InvestigatePage: React.FC = () => {
                 setCaseTitle(`Incident: ${detail.email.subject}`);
                 setShowCreateCaseModal(true);
               }}
-              className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 hover:border-emerald-500 text-xs font-bold text-slate-800 dark:text-slate-200 transition-colors shadow-sm"
+              className="flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 hover:border-emerald-500 text-xs font-bold text-slate-800 dark:text-slate-200 transition-colors shadow-sm"
             >
               <Briefcase className="w-4 h-4 text-emerald-600" />
-              <span>Escalate to Case</span>
+              <span>Escalate</span>
             </button>
 
             <button
               onClick={() => setShowExportModal(true)}
-              className="flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md shadow-emerald-600/25 transition-all"
+              className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md shadow-emerald-600/25 transition-all"
             >
               <FileDown className="w-4 h-4" />
-              <span>Export Report</span>
+              <span>Export</span>
+            </button>
+          </div>
+        ) : (
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              onClick={() => setShowQuishingModal(true)}
+              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-purple-300 dark:border-purple-800 bg-purple-50 dark:bg-purple-950/40 text-xs font-bold text-purple-700 dark:text-purple-300 hover:bg-purple-100 transition-colors"
+            >
+              <QrCode className="w-3.5 h-3.5" />
+              <span>Quishing Scanner</span>
+            </button>
+            <button
+              onClick={() => setShowThreatActorModal(true)}
+              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-950/40 text-xs font-bold text-red-700 dark:text-red-300 hover:bg-red-100 transition-colors"
+            >
+              <Skull className="w-3.5 h-3.5" />
+              <span>APT Intelligence</span>
+            </button>
+            <button
+              onClick={() => setShowSoarModal(true)}
+              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-amber-300 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 text-xs font-bold text-amber-700 dark:text-amber-300 hover:bg-amber-100 transition-colors"
+            >
+              <Zap className="w-3.5 h-3.5" />
+              <span>SOAR Playbook</span>
             </button>
           </div>
         )}
@@ -532,6 +594,13 @@ export const InvestigatePage: React.FC = () => {
             severity={detail.investigation.severity}
           />
 
+          {/* SECTION 3.5: AI Psychological Manipulation & Filter De-Obfuscation */}
+          <PsychologicalCueInspector
+            emailBody={detail.email.body_text}
+            subject={detail.email.subject}
+            threatType={detail.investigation.threat_type}
+          />
+
           {/* SECTION 4: Interactive Graph & Geolocation Map */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <InvestigationGraph
@@ -595,6 +664,43 @@ export const InvestigatePage: React.FC = () => {
           onClose={() => setShowRulesModal(false)}
         />
       )}
+
+      {/* Quishing Scanner Modal */}
+      <QuishingScannerModal
+        isOpen={showQuishingModal}
+        onClose={() => setShowQuishingModal(false)}
+        onAddIoc={(ioc) => {
+          if (detail) {
+            const newIoc: ExtractedIOC = {
+              id: `quish-${Date.now()}`,
+              type: 'URL',
+              indicator: ioc.value,
+              risk_level: 'CRITICAL',
+              source: 'ATTACHMENT',
+              status: 'SUSPICIOUS',
+              context: `Quishing payload: ${ioc.threat}`
+            };
+            setDetail({
+              ...detail,
+              iocs: [newIoc, ...detail.iocs]
+            });
+          }
+        }}
+      />
+
+      {/* Threat Actor Profiler Modal */}
+      <ThreatActorProfilerModal
+        isOpen={showThreatActorModal}
+        onClose={() => setShowThreatActorModal(false)}
+        investigationDetail={detail}
+      />
+
+      {/* SOAR Playbook Modal */}
+      <SoarPlaybookModal
+        isOpen={showSoarModal}
+        onClose={() => setShowSoarModal(false)}
+        investigationDetail={detail}
+      />
 
       {/* Export Report Modal */}
       {showExportModal && detail && (

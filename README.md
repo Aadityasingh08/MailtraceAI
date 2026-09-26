@@ -46,12 +46,17 @@ The platform empowers security teams to detect and neutralize advanced spear phi
 | :--- | :--- |
 | 🌓 **Dual-Engine SOC Theme** | 1-Click switch between **Cyber SOC Obsidian Dark** (`#0B0F17`) and **Crisp Emerald White** light mode with persistent storage. |
 | ⚡ **Forensic Command Palette** | Global keyboard-driven (`Ctrl + K` / `Cmd + K`) quick navigation, simulation launcher, and instant action engine. |
+| 📱 **Quishing Optical Decoder** | Unmasks QR code phishing lures, resolves multi-hop redirects & detects MFA session token harvesters. |
+| 💀 **APT Threat Attribution** | Correlates email TTPs to known nation-state syndicates (**Lazarus Group, FIN7, APT29 Cozy Bear, Scattered Spider**). |
+| ⚡ **Automated SOAR Playbook** | 1-Click containment: domain quarantine, M365 session token revocation, EDR broadcast, and enterprise mailbox purge. |
+| 🧠 **AI Psychological Inspector** | Cognitive behavioral breakdown (Urgency, Authority, Fear) & unmasked filter evasion (zero-width spaces, tracking beacons). |
 | 🛡️ **Detection Engineering Studio** | Auto-compiles IoCs into production **YARA rules**, **Sigma rules** (Splunk/Elastic/Sentinel), and **Suricata/Snort NIDS** signatures. |
 | 🔬 **RFC 5322 Syntax Anomaly Diff** | Side-by-side structured forensic table & raw header stream highlighting forged hops and MTA anomalies. |
 | 🗺️ **Multi-Hop Relay Geo-Tracer** | Visual hop-by-hop tracking of the email relay journey across international ISPs with zero external API key requirements. |
 | 📊 **SOC Dossier & Confidence Matrix** | 0–100 explainable risk scoring mapped to **MITRE ATT&CK** (`T1566`, `T1566.002`, `T1204`). |
 | 📋 **ITSM Incident Ticket Formatter** | 1-Click structured incident report generator tailored for **Jira Service Management** and **ServiceNow**. |
 | 💼 **Evidence Vault & Chain of Custody** | Automated cryptographic hashing (MD5, SHA-1, SHA-256) of raw email files and payload attachments. |
+
 
 ---
 

@@ -14,7 +14,10 @@ import {
   ArrowRight, 
   X,
   Terminal,
-  Command
+  Command,
+  QrCode,
+  Skull,
+  Zap
 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { api } from '../services/api';
@@ -73,6 +76,9 @@ export const CommandPaletteModal: React.FC<CommandPaletteModalProps> = ({ isOpen
     { id: 'history', title: 'Historical Threat Archive', category: 'Navigation', icon: History, action: () => handleNavigate('/history') },
     { id: 'intel', title: 'Threat Intelligence & IP Reputation', category: 'Navigation', icon: Globe, action: () => handleNavigate('/intelligence') },
     { id: 'settings', title: 'System & API Settings', category: 'Navigation', icon: Settings, action: () => handleNavigate('/settings') },
+    { id: 'tool-quishing', title: 'Quishing (QR Code) Forensic Scanner', category: 'Forensic Tools', icon: QrCode, action: () => handleNavigate('/investigate') },
+    { id: 'tool-apt', title: 'Threat Actor Attribution (Lazarus, FIN7, APT29)', category: 'Forensic Tools', icon: Skull, action: () => handleNavigate('/investigate') },
+    { id: 'tool-soar', title: 'Automated SOAR Incident Playbook', category: 'Forensic Tools', icon: Zap, action: () => handleNavigate('/investigate') },
     { 
       id: 'theme', 
       title: `Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`, 
