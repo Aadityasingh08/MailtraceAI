@@ -187,48 +187,106 @@ Test MailTrace AI instantly using our realistic forensic samples (accessible via
 
 ---
 
-## 👥 Authors & Core Team
+## 👥 Authors & Visionaries ❤️
 
-MailTrace AI was architected, engineered, and developed by:
+<p align="center">
+  <i>"Engineered with relentless passion, forensic precision, and advanced AI."</i>
+</p>
 
 <div align="center">
-  <table style="border: none; background: transparent;">
+  <table style="border: none; background: transparent; border-collapse: separate; border-spacing: 24px;">
     <tr>
-      <td align="center" width="50%" style="padding: 20px;">
-        <a href="https://github.com/Aadityasingh08" target="_blank">
-          <img src="https://github.com/Aadityasingh08.png" width="130px;" alt="Aditya Singh" style="border-radius: 50%; border: 3px solid #10B981; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);"/><br />
-          <h3 style="margin-top: 10px; margin-bottom: 2px;"><b>Aditya Singh</b></h3>
-        </a>
-        <p style="color: #10B981; font-weight: bold; margin-bottom: 6px;">Full Stack AI Engineer</p>
-        <p style="font-size: 13px; color: #64748B;">System Architecture • Threat Intelligence • SOC Forensics</p>
-        <a href="https://github.com/Aadityasingh08" target="_blank">
-          <img src="https://img.shields.io/badge/GitHub-Aadityasingh08-181717?style=for-the-badge&logo=github&logoColor=white" alt="Aditya Singh GitHub" />
-        </a>
+      <!-- Aditya Singh Card -->
+      <td align="center" style="background: linear-gradient(145deg, rgba(16, 185, 129, 0.08), rgba(15, 23, 42, 0.04)); border: 1.5px solid rgba(16, 185, 129, 0.35); border-radius: 20px; padding: 28px 24px; width: 340px; box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.25);">
+        <div style="position: relative; display: inline-block;">
+          <a href="https://github.com/Aadityasingh08" target="_blank">
+            <img src="https://github.com/Aadityasingh08.png" width="130px" height="130px" alt="Aditya Singh" style="border-radius: 50%; border: 3.5px solid #10B981; box-shadow: 0 0 25px rgba(16, 185, 129, 0.5); object-fit: cover;" />
+          </a>
+        </div>
+        <br />
+        <h3 style="margin-top: 14px; margin-bottom: 4px; font-size: 20px;">
+          <a href="https://github.com/Aadityasingh08" target="_blank" style="text-decoration: none; color: inherit;">
+            <b>Aditya Singh ❤️</b>
+          </a>
+        </h3>
+        <span style="display: inline-block; background: rgba(16, 185, 129, 0.15); color: #059669; border: 1px solid rgba(16, 185, 129, 0.4); font-weight: 700; font-size: 12px; padding: 4px 12px; border-radius: 12px; margin-bottom: 10px; font-family: monospace;">
+          ⚡ FULL STACK AI ENGINEER
+        </span>
+        <p style="font-size: 13px; color: #64748B; margin: 8px 0 16px 0; line-height: 1.5;">
+          🛡️ <b>Focus:</b> System Architecture • Threat Intelligence • RFC 5322 Forensics • Multi-Hop Latency Engines
+        </p>
+        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+          <a href="https://github.com/Aadityasingh08" target="_blank">
+            <img src="https://img.shields.io/badge/GitHub-Aadityasingh08-181717?style=for-the-badge&logo=github&logoColor=white" alt="Aditya GitHub" />
+          </a>
+          <a href="https://github.com/Aadityasingh08?tab=followers" target="_blank">
+            <img src="https://img.shields.io/github/followers/Aadityasingh08?label=Follow&style=for-the-badge&color=10B981&logo=github" alt="Follow Aditya" />
+          </a>
+        </div>
       </td>
-      <td align="center" width="50%" style="padding: 20px;">
-        <a href="https://github.com/BhawnaBhadana" target="_blank">
-          <img src="https://github.com/BhawnaBhadana.png" width="130px;" alt="Bhawna" style="border-radius: 50%; border: 3px solid #10B981; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);"/><br />
-          <h3 style="margin-top: 10px; margin-bottom: 2px;"><b>Bhawna</b></h3>
-        </a>
-        <p style="color: #10B981; font-weight: bold; margin-bottom: 6px;">Full Stack AI Engineer</p>
-        <p style="font-size: 13px; color: #64748B;">Detection Engineering • UI/UX SOC • AI Pipelines</p>
-        <a href="https://github.com/BhawnaBhadana" target="_blank">
-          <img src="https://img.shields.io/badge/GitHub-BhawnaBhadana-181717?style=for-the-badge&logo=github&logoColor=white" alt="Bhawna GitHub" />
-        </a>
+
+      <!-- Bhawna Card -->
+      <td align="center" style="background: linear-gradient(145deg, rgba(16, 185, 129, 0.08), rgba(15, 23, 42, 0.04)); border: 1.5px solid rgba(16, 185, 129, 0.35); border-radius: 20px; padding: 28px 24px; width: 340px; box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.25);">
+        <div style="position: relative; display: inline-block;">
+          <a href="https://github.com/BhawnaBhadana" target="_blank">
+            <img src="https://github.com/BhawnaBhadana.png" width="130px" height="130px" alt="Bhawna" style="border-radius: 50%; border: 3.5px solid #10B981; box-shadow: 0 0 25px rgba(16, 185, 129, 0.5); object-fit: cover;" />
+          </a>
+        </div>
+        <br />
+        <h3 style="margin-top: 14px; margin-bottom: 4px; font-size: 20px;">
+          <a href="https://github.com/BhawnaBhadana" target="_blank" style="text-decoration: none; color: inherit;">
+            <b>Bhawna ❤️</b>
+          </a>
+        </h3>
+        <span style="display: inline-block; background: rgba(16, 185, 129, 0.15); color: #059669; border: 1px solid rgba(16, 185, 129, 0.4); font-weight: 700; font-size: 12px; padding: 4px 12px; border-radius: 12px; margin-bottom: 10px; font-family: monospace;">
+          ⚡ FULL STACK AI ENGINEER
+        </span>
+        <p style="font-size: 13px; color: #64748B; margin: 8px 0 16px 0; line-height: 1.5;">
+          🔬 <b>Focus:</b> Detection Engineering • Cyber SOC Experience • YARA / Sigma Logic • Threat Heuristics
+        </p>
+        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+          <a href="https://github.com/BhawnaBhadana" target="_blank">
+            <img src="https://img.shields.io/badge/GitHub-BhawnaBhadana-181717?style=for-the-badge&logo=github&logoColor=white" alt="Bhawna GitHub" />
+          </a>
+          <a href="https://github.com/BhawnaBhadana?tab=followers" target="_blank">
+            <img src="https://img.shields.io/github/followers/BhawnaBhadana?label=Follow&style=for-the-badge&color=10B981&logo=github" alt="Follow Bhawna" />
+          </a>
+        </div>
       </td>
     </tr>
   </table>
+</div>
+
+<br />
+
+<div align="center">
+  <p style="font-size: 15px; font-weight: 600; color: #334155;">
+    Crafted with ❤️, Passion & Advanced Artificial Intelligence by <b>Aditya Singh</b> & <b>Bhawna</b>
+  </p>
+  <p style="font-size: 13px; color: #64748B;">
+    ⭐ <i>If you like this project, please consider giving it a star on GitHub! It means the world to us.</i> ⭐
+  </p>
+  <p>
+    <a href="https://github.com/Aadityasingh08/MailtraceAI/stargazers">
+      <img src="https://img.shields.io/github/stars/Aadityasingh08/MailtraceAI?style=social" alt="GitHub Stars" />
+    </a>
+    &nbsp;&nbsp;
+    <a href="https://github.com/Aadityasingh08/MailtraceAI/network/members">
+      <img src="https://img.shields.io/github/forks/Aadityasingh08/MailtraceAI?style=social" alt="GitHub Forks" />
+    </a>
+  </p>
 </div>
 
 ---
 
 ## 🌟 Support & Contributions
 
-Contributions, bug reports, and feature suggestions are welcome!
-- If you find this project valuable for your SOC operations or research, please consider giving it a **⭐️ Star** on [GitHub](https://github.com/Aadityasingh08/MailtraceAI)!
-- Feel free to open an **[Issue](https://github.com/Aadityasingh08/MailtraceAI/issues)** or submit a **[Pull Request](https://github.com/Aadityasingh08/MailtraceAI/pulls)**.
+Contributions, security disclosures, and feature ideas are warmly welcome!
+- Give this project a **⭐️ Star** on [GitHub](https://github.com/Aadityasingh08/MailtraceAI) if it helped you.
+- Open an **[Issue](https://github.com/Aadityasingh08/MailtraceAI/issues)** for bug reports or submit a **[Pull Request](https://github.com/Aadityasingh08/MailtraceAI/pulls)**.
 
 ---
 
 ## 📄 License
 This project is open-source and distributed under the **[MIT License](LICENSE)**.
+
