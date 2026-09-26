@@ -4,9 +4,10 @@ client/node_modules/
 server/node_modules/
 
 # Production build artifacts
-dist/
+/dist/
 client/dist/
-server/dist/
+!server/dist/
+!server/dist/**
 
 # Environment and sensitive keys
 .env
@@ -38,3 +39,5 @@ Desktop.ini
 .idea/
 *.swp
 *.swo
+
+.vercel
