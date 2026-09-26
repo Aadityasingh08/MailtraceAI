@@ -7,56 +7,56 @@
   <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
   <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
   <img src="https://img.shields.io/badge/License-MIT-purple?style=for-the-badge" alt="License MIT" />
+  <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge" alt="PRs Welcome" />
+</p>
+
+<p align="center">
+  <b>A next-generation Security Operations Center (SOC) platform for autonomous email parsing, RFC 5322 header forensics, multi-hop relay telemetry, MITRE ATT&CK mapping, and automated YARA/Sigma detection engineering.</b>
 </p>
 
 ---
 
-## 📌 Overview
+## 📌 Executive Overview
 
-**MailTrace AI** is an enterprise-grade **Autonomous Email Security Operations Center (SOC) & Threat Forensics Platform**. Designed for tier-1/tier-2 SOC analysts and incident responders, MailTrace AI ingests raw RFC 5322 `.eml` files, disassembles transmission pathways, executes forensic header analysis, tracks IP relay hops across global infrastructure, and computes explainable multi-vector threat risk scores.
+**MailTrace AI** is an enterprise-grade **Autonomous Email Security Operations Center (SOC) & Threat Forensics Platform**. Purpose-built for Tier-1/Tier-2 SOC analysts, DFIR teams, and security researchers, MailTrace AI ingests raw RFC 5322 `.eml` files, traces transmission pathways, executes forensic header analysis, tracks IP relay hops across global infrastructure, and computes explainable multi-vector threat risk scores.
 
-The platform empowers security teams to dismantle advanced spear phishing, CEO fraud/BEC (Business Email Compromise), malware dropper attachments, and credential harvesting campaigns in seconds.
+The platform empowers security teams to detect and neutralize advanced spear phishing, CEO fraud/BEC (Business Email Compromise), malware dropper attachments, and credential harvesting campaigns in seconds.
 
 ---
 
-## ✨ Key Capabilities & Features
+## ✨ Key Capabilities & Highlights
 
-### 🌓 1. Dynamic Dual-Engine SOC Theme (Cyber Dark & Crisp Light)
-- **1-Click Theme Switcher**: Effortlessly switch between **Cyber SOC Obsidian Dark** (`#0B0F17`) with glowing emerald accents and **Crisp Emerald White** light mode.
-- **Persistent State**: Retains user preference across browser sessions using `localStorage`.
-- **Adaptive Satellite Map**: OpenStreetMap tiles automatically transition into high-contrast military cyber-recon dark mode.
+| Feature | Description |
+| :--- | :--- |
+| 🌓 **Dual-Engine SOC Theme** | 1-Click switch between **Cyber SOC Obsidian Dark** (`#0B0F17`) and **Crisp Emerald White** light mode with persistent storage. |
+| ⚡ **Forensic Command Palette** | Global keyboard-driven (`Ctrl + K` / `Cmd + K`) quick navigation, simulation launcher, and instant action engine. |
+| 🛡️ **Detection Engineering Studio** | Auto-compiles IoCs into production **YARA rules**, **Sigma rules** (Splunk/Elastic/Sentinel), and **Suricata/Snort NIDS** signatures. |
+| 🔬 **RFC 5322 Syntax Anomaly Diff** | Side-by-side structured forensic table & raw header stream highlighting forged hops and MTA anomalies. |
+| 🗺️ **Multi-Hop Relay Geo-Tracer** | Visual hop-by-hop tracking of the email relay journey across international ISPs with zero external API key requirements. |
+| 📊 **SOC Dossier & Confidence Matrix** | 0–100 explainable risk scoring mapped to **MITRE ATT&CK** (`T1566`, `T1566.002`, `T1204`). |
+| 📋 **ITSM Incident Ticket Formatter** | 1-Click structured incident report generator tailored for **Jira Service Management** and **ServiceNow**. |
+| 💼 **Evidence Vault & Chain of Custody** | Automated cryptographic hashing (MD5, SHA-1, SHA-256) of raw email files and payload attachments. |
 
-### ⚡ 2. Global Forensic Command Palette (`Ctrl + K` / `Cmd + K`)
-- Fast keyboard-driven workflow for instant operations.
-- Quick navigation across Workspace, Threat Intel, Investigation Archives, and Case Management.
-- Instant 1-click loading of realistic threat attack simulations.
+---
 
-### 🛡️ 3. Detection Engineering Studio (Live Rule Compiler)
-- Automated extraction of Indicators of Compromise (IoCs) compiled into production-ready detection logic:
-  - **YARA Signatures**: File and payload detection rules targeting attachment hashes, sender spoofing, and malicious subject patterns.
-  - **Sigma Rules**: SIEM/XDR ingestion rules compatible with Splunk, Elasticsearch, and Microsoft Sentinel.
-  - **Suricata / Snort Rules**: Network intrusion detection signatures for inbound SMTP traffic.
-  - **1-Click File Export**: Download `.yar`, `.yml`, and `.rules` files directly to your SOC workstation.
+## 📑 Standards & Protocols Compliance
 
-### 🔬 4. RFC 5322 Raw Header Syntax Anomaly & Diff Inspector
-- Side-by-side structured forensic table and raw header stream view.
-- Real-time syntax highlighting for spoofed hops, forged `Received` headers, domain mismatches, and suspicious Mail Transfer Agents (MTAs).
+MailTrace AI adheres strictly to core internet messaging and cybersecurity standards:
+- **RFC 5322**: Internet Message Format parsing and structural syntax validation.
+- **RFC 7208**: Sender Policy Framework (SPF) authentication & record verification.
+- **RFC 6376**: DomainKeys Identified Mail (DKIM) cryptographic signature verification.
+- **RFC 7489**: Domain-based Message Authentication, Reporting, and Conformance (DMARC).
+- **MITRE ATT&CK Matrix**: Tactical alignment with Initial Access & Execution vectors.
 
-### 🗺️ 5. Multi-Hop Geospatial Relay Tracer
-- Leaflet-powered visual hop-by-hop tracking of the email relay journey across international ISPs and cloud networks.
-- Built-in public fallback geolocation data with **zero mandatory API keys** required.
+---
 
-### 📊 6. SOC Analyst Dossier & MITRE ATT&CK Matrix
-- **Explainable Threat Risk Engine**: 0–100 risk scoring with breakdown across Authentication (SPF/DKIM/DMARC), Sender Reputation, Body Sentiment, and Attachment Analysis.
-- **MITRE ATT&CK Mapping**: Automatic alignment with techniques such as `T1566` (Phishing), `T1566.002` (Spearphishing Link), and `T1204` (User Execution).
-- **Executive Security Summary**: Clear, jargon-free threat assessment generated for non-technical stakeholders.
+## ⌨️ Forensic Keyboard Shortcuts
 
-### 📋 7. Incident Response Ticket Formatter
-- 1-Click generation and clipboard copying of formatted incident response tickets ready for **Jira Service Management** and **ServiceNow ITSM**.
-
-### 💼 8. Case Management & Chain of Custody Evidence Vault
-- Automated cryptographic hashing (MD5, SHA-1, SHA-256) of raw email files and payload attachments.
-- Full case escalation workflow: triage status, severity flags, and timestamped analyst notes.
+| Shortcut | Action | Scope |
+| :--- | :--- | :--- |
+| <kbd>Ctrl</kbd> + <kbd>K</kbd> / <kbd>Cmd</kbd> + <kbd>K</kbd> | Open Global Forensic Command Palette | Global |
+| <kbd>Esc</kbd> | Dismiss any open modal or inspector | Global |
+| <kbd>1-Click</kbd> Attack Loader | Instant simulation (CEO Fraud, M365 Phish, Malware Dropper) | Palette / Investigate |
 
 ---
 
@@ -76,25 +76,52 @@ graph TD
     B --> K[Detection Engineering Studio YARA / Sigma]
 ```
 
-### Frontend
-- **Framework**: React 18, TypeScript, Vite
-- **Styling**: Tailwind CSS, CSS Variables for seamless Dark/Light themes
-- **Icons**: Lucide React
-- **Visualizations**: Recharts, Leaflet, React-Leaflet
+### Architecture Breakdown
+- **Frontend**: React 18, TypeScript, Vite, Tailwind CSS with dynamic CSS variables, Lucide React, Recharts, Leaflet / OpenStreetMap.
+- **Backend**: Node.js, Express, TypeScript, `mailparser` (RFC 5322 stream engine), Better-SQLite3, Axios.
+- **Security & Integrity**: JWT Authentication, bcrypt password hashing, SHA-256 payload integrity hashing.
 
-### Backend
-- **Server**: Node.js, Express, TypeScript
-- **Parser**: `mailparser` (RFC 5322 compliant stream processor)
-- **Database**: SQLite with `better-sqlite3` (zero-setup local storage)
-- **Security**: JWT Authentication, bcrypt password hashing
+---
+
+## 📁 Repository Structure
+
+```
+MailtraceAI/
+├── client/                     # Frontend Single Page Application
+│   ├── src/
+│   │   ├── components/         # Reusable SOC & Forensics UI widgets
+│   │   │   ├── CommandPaletteModal.tsx    # Global Ctrl+K Command Palette
+│   │   │   ├── DetectionRulesModal.tsx    # Live YARA, Sigma & Suricata Studio
+│   │   │   ├── HeaderForensicsTable.tsx   # RFC 5322 Anomaly Diff & Table
+│   │   │   ├── ExportReportModal.tsx      # Jira & ServiceNow Formatter
+│   │   │   ├── GeoMap.tsx                 # Multi-Hop Visual Map
+│   │   │   └── ...
+│   │   ├── context/            # AuthContext & Dynamic ThemeContext (Light/Dark)
+│   │   ├── pages/              # Dashboard, Investigate, Cases, Intel, History
+│   │   └── services/           # Axios API client
+│   └── tailwind.config.js      # Dynamic SOC color palette configuration
+├── server/                     # Backend API & Threat Forensics Engine
+│   ├── src/
+│   │   ├── ai/                 # Threat detection & confidence matrix scoring
+│   │   ├── controllers/        # Investigation, Cases, Intel, Auth endpoints
+│   │   ├── intelligence/       # Header parsing, IoC extraction, lookalike detection
+│   │   ├── models/             # SQLite schema and persistent database
+│   │   └── parsers/            # RFC 5322 mailparser stream pipelines
+│   └── data/                   # SQLite database storage (gitignored)
+├── start.bat                   # 1-Click Windows Batch Launcher
+├── start.ps1                   # 1-Click Windows PowerShell Launcher
+├── stop.bat                    # 1-Click Graceful Shutdown Script
+├── .gitignore                  # Production gitignore hygiene
+└── README.md                   # Project documentation
+```
 
 ---
 
 ## 🚀 Quickstart & Installation
 
 ### Prerequisites
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
-- `npm` (comes bundled with Node.js)
+- [Node.js](https://nodejs.org/) (v18.0 or higher recommended)
+- `npm` (bundled with Node.js)
 - `git`
 
 ### 1. Clone the Repository
@@ -105,57 +132,57 @@ cd MailtraceAI
 
 ### 2. Install Dependencies
 ```bash
-# Install root, client, and server dependencies
+# Automatically install root, client, and server dependencies
 npm run install:all
 ```
-*(Or install manually in both `./client` and `./server`)*:
+*(Or install manually in each subfolder)*:
 ```bash
 cd server && npm install
 cd ../client && npm install
 ```
 
-### 3. Environment Setup (Optional)
-The application works immediately out-of-the-box with local SQLite and built-in sample intel. To connect optional external intelligence feeds:
+### 3. Environment Configuration (Optional)
+The platform runs immediately out-of-the-box with local SQLite and built-in sample intel. To connect external threat feeds:
 ```bash
 cp server/.env.example server/.env
 ```
-Configure your keys in `server/.env`:
+Edit `server/.env`:
 ```env
 PORT=5000
-JWT_SECRET=your-secure-jwt-secret
+JWT_SECRET=super-secret-jwt-key-mailtrace-soc-2025
 VIRUSTOTAL_API_KEY=your_key_here
 ABUSEIPDB_API_KEY=your_key_here
 ```
 
 ### 4. 1-Click Launch
 
-#### Windows (Instant Batch / PowerShell):
-Double-click `start.bat` or run:
+#### Windows (Instant Launcher):
+Double-click `start.bat` or run in PowerShell:
 ```powershell
 .\start.ps1
 ```
 
-#### Terminal / Cross-Platform:
+#### Terminal / Manual:
 ```bash
-# Terminal 1: Start Backend Server (Port 5000)
+# Terminal 1: Backend Server (Port 5000)
 cd server
 npm run dev
 
-# Terminal 2: Start Client Workspace (Port 5173)
+# Terminal 2: Frontend Workspace (Port 5173)
 cd client
 npm run dev
 ```
 
-Open your browser at **`http://localhost:5173`** to access the MailTrace AI SOC Workspace.
+Navigate to **`http://localhost:5173`** in your browser.
 
 ---
 
-## 🧪 Included Attack Scenarios (1-Click Simulations)
+## 🧪 Built-In Attack Simulation Scenarios
 
-MailTrace AI includes pre-configured realistic forensic samples for demonstration and training:
-1. **Executive Wire Transfer BEC (CEO Fraud)**: Spoofed display names, reply-to routing mismatch, urgency triggers.
+Test MailTrace AI instantly using our realistic forensic samples (accessible via the Investigate page or <kbd>Ctrl</kbd> + <kbd>K</kbd>):
+1. **Executive Wire Transfer BEC (CEO Fraud)**: Spoofed display names, reply-to routing mismatch, urgency manipulation triggers.
 2. **Credential Harvester (Microsoft 365 Phish)**: Homoglyph lookalike domains, credential capture URI redirection.
-3. **Malicious Invoice Attachment (Trojan Dropper)**: Suspicious `.vbs` / executable payload with hash indicators.
+3. **Malicious Invoice Attachment (Trojan Dropper)**: Suspicious `.vbs` executable payload with hash indicators.
 4. **Clean Enterprise Newsletter**: Valid SPF, DKIM, and DMARC alignment passing all checks.
 
 ---
@@ -164,10 +191,42 @@ MailTrace AI includes pre-configured realistic forensic samples for demonstratio
 
 MailTrace AI was architected, engineered, and developed by:
 
-| Name | Role | Profile |
-| :--- | :--- | :--- |
-| **Aditya Singh** | Full Stack AI Engineer | [![GitHub](https://img.shields.io/badge/GitHub-Aadityasingh08-black?style=flat&logo=github)](https://github.com/Aadityasingh08) |
-| **Bhawna** | Full Stack AI Engineer | [![Developer](https://img.shields.io/badge/Developer-Full%20Stack%20AI-emerald?style=flat&logo=code)]() |
+<div align="center">
+  <table style="border: none; background: transparent;">
+    <tr>
+      <td align="center" width="50%" style="padding: 20px;">
+        <a href="https://github.com/Aadityasingh08" target="_blank">
+          <img src="https://github.com/Aadityasingh08.png" width="130px;" alt="Aditya Singh" style="border-radius: 50%; border: 3px solid #10B981; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);"/><br />
+          <h3 style="margin-top: 10px; margin-bottom: 2px;"><b>Aditya Singh</b></h3>
+        </a>
+        <p style="color: #10B981; font-weight: bold; margin-bottom: 6px;">Full Stack AI Engineer</p>
+        <p style="font-size: 13px; color: #64748B;">System Architecture • Threat Intelligence • SOC Forensics</p>
+        <a href="https://github.com/Aadityasingh08" target="_blank">
+          <img src="https://img.shields.io/badge/GitHub-Aadityasingh08-181717?style=for-the-badge&logo=github&logoColor=white" alt="Aditya Singh GitHub" />
+        </a>
+      </td>
+      <td align="center" width="50%" style="padding: 20px;">
+        <a href="https://github.com/BhawnaBhadana" target="_blank">
+          <img src="https://github.com/BhawnaBhadana.png" width="130px;" alt="Bhawna" style="border-radius: 50%; border: 3px solid #10B981; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);"/><br />
+          <h3 style="margin-top: 10px; margin-bottom: 2px;"><b>Bhawna</b></h3>
+        </a>
+        <p style="color: #10B981; font-weight: bold; margin-bottom: 6px;">Full Stack AI Engineer</p>
+        <p style="font-size: 13px; color: #64748B;">Detection Engineering • UI/UX SOC • AI Pipelines</p>
+        <a href="https://github.com/BhawnaBhadana" target="_blank">
+          <img src="https://img.shields.io/badge/GitHub-BhawnaBhadana-181717?style=for-the-badge&logo=github&logoColor=white" alt="Bhawna GitHub" />
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+---
+
+## 🌟 Support & Contributions
+
+Contributions, bug reports, and feature suggestions are welcome!
+- If you find this project valuable for your SOC operations or research, please consider giving it a **⭐️ Star** on [GitHub](https://github.com/Aadityasingh08/MailtraceAI)!
+- Feel free to open an **[Issue](https://github.com/Aadityasingh08/MailtraceAI/issues)** or submit a **[Pull Request](https://github.com/Aadityasingh08/MailtraceAI/pulls)**.
 
 ---
 
