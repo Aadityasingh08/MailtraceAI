@@ -39,7 +39,7 @@ export const ThemePickerModal: React.FC<ThemePickerModalProps> = ({ isOpen, onCl
               <h2 className="text-lg font-bold text-soc-text flex items-center gap-2">
                 Interface Color Themes
                 <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border border-soc-border text-soc-muted">
-                  5 Styles
+                  {THEME_OPTIONS.length} Curated Styles
                 </span>
               </h2>
               <p className="text-xs text-soc-muted">

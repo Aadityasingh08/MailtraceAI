@@ -114,11 +114,11 @@ export const SettingsPage: React.FC = () => {
             </div>
           </div>
           <span className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-soc-border text-soc-muted">
-            5 Styles
+            {THEME_OPTIONS.length} Curated Styles
           </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 pt-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 pt-1">
           {THEME_OPTIONS.map((opt) => {
             const isSelected = colorTheme === opt.id;
             return (

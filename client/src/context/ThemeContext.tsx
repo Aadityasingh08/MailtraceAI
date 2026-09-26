@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-export type ColorTheme = 'cyber-cyan' | 'matrix-emerald' | 'synth-violet' | 'crimson-stealth' | 'arctic-light';
+export type ColorTheme = 'onyx-amber' | 'linear-mono' | 'nordic-sage' | 'cyber-cyan' | 'matrix-emerald' | 'arctic-light';
 export type ThemeMode = 'light' | 'dark';
 
 export interface ThemeOption {
@@ -15,10 +15,37 @@ export interface ThemeOption {
 
 export const THEME_OPTIONS: ThemeOption[] = [
   {
+    id: 'onyx-amber',
+    name: 'Onyx Amber',
+    subtitle: 'Warm Solar Amber & Titanium Matte (Linear & Palantir style)',
+    badge: 'Bespoke / Unique',
+    accentColor: '#F59E0B',
+    gradientClass: 'from-amber-400 via-orange-400 to-amber-600',
+    isDark: true,
+  },
+  {
+    id: 'linear-mono',
+    name: 'Linear Titanium',
+    subtitle: 'Ultra-Crisp Swiss Carbon & Platinum Slate',
+    badge: 'Minimalist',
+    accentColor: '#E2E8F0',
+    gradientClass: 'from-slate-200 via-zinc-400 to-slate-600',
+    isDark: true,
+  },
+  {
+    id: 'nordic-sage',
+    name: 'Nordic Sage & Cedar',
+    subtitle: 'Organic Eucalyptus Mist & Deep Earth Timber',
+    badge: 'Organic',
+    accentColor: '#14B8A6',
+    gradientClass: 'from-teal-400 via-emerald-500 to-teal-700',
+    isDark: true,
+  },
+  {
     id: 'cyber-cyan',
     name: 'Cyber Cyan',
-    subtitle: 'Electric Cyan & Cosmic Void',
-    badge: 'Popular',
+    subtitle: 'Electric Cyan & Cosmic Void Space',
+    badge: 'High-Tech',
     accentColor: '#06B6D4',
     gradientClass: 'from-cyan-500 via-teal-400 to-blue-600',
     isDark: true,
@@ -33,27 +60,9 @@ export const THEME_OPTIONS: ThemeOption[] = [
     isDark: true,
   },
   {
-    id: 'synth-violet',
-    name: 'Synth Violet',
-    subtitle: 'Cyberpunk Purple & Deep Nebula',
-    badge: 'Neon AI',
-    accentColor: '#A855F7',
-    gradientClass: 'from-purple-500 via-violet-400 to-indigo-600',
-    isDark: true,
-  },
-  {
-    id: 'crimson-stealth',
-    name: 'Crimson Stealth',
-    subtitle: 'Tactical Red & Carbon Ops',
-    badge: 'War Room',
-    accentColor: '#EF4444',
-    gradientClass: 'from-red-500 via-rose-500 to-orange-600',
-    isDark: true,
-  },
-  {
     id: 'arctic-light',
-    name: 'Arctic Daylight',
-    subtitle: 'Pristine Executive Glass',
+    name: 'Swiss Studio Daylight',
+    subtitle: 'Architectural Paper White & Deep Ink Charcoal',
     badge: 'Daylight',
     accentColor: '#0284C7',
     gradientClass: 'from-sky-500 via-blue-500 to-indigo-600',
@@ -77,8 +86,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     if (saved && THEME_OPTIONS.some(t => t.id === saved)) {
       return saved;
     }
-    // Default to the new high-tech Cyber Cyan theme
-    return 'cyber-cyan';
+    // Default to the handcrafted Onyx Amber theme (Unique, no AI clichés)
+    return 'onyx-amber';
   });
 
   const currentOption = THEME_OPTIONS.find(t => t.id === colorTheme) || THEME_OPTIONS[0];
@@ -107,14 +116,14 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   }, [colorTheme, currentOption.isDark, themeMode]);
 
   const toggleTheme = () => {
-    setColorThemeState(prev => (prev === 'arctic-light' ? 'cyber-cyan' : 'arctic-light'));
+    setColorThemeState(prev => (prev === 'arctic-light' ? 'onyx-amber' : 'arctic-light'));
   };
 
   const setTheme = (mode: ThemeMode) => {
     if (mode === 'light') {
       setColorThemeState('arctic-light');
     } else {
-      setColorThemeState(prev => (prev === 'arctic-light' ? 'cyber-cyan' : prev));
+      setColorThemeState(prev => (prev === 'arctic-light' ? 'onyx-amber' : prev));
     }
   };
 
