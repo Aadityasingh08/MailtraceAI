@@ -286,7 +286,7 @@ Open your browser at **`http://localhost:5173`**.
 <div align="center">
   <p style="font-size: 15px; font-weight: 700; color: #1E293B;">
     Built with ❤️ by 
-    <a href="https://github.com/Aadityasingh08" target="_blank" style="color: #10B981; text-decoration: none;"><b>Aditya Singh ❤️</b></a> 
+    <a href="https://github.com/Aadityasingh08" target="_blank" style="color: #10B981; text-decoration: none;"><b>Aditya singh ❤️</b></a> 
     & 
     <a href="https://github.com/BhawnaBhadana" target="_blank" style="color: #F59E0B; text-decoration: none;"><b>Bhawna Bhadana ❤️</b></a>
   </p>
